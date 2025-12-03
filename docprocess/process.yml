@@ -1,0 +1,76 @@
+process:
+  id: "criar_artigo"
+  name: "Criação e publicação de artigo"
+  description: >
+    Processo que coleta materiais fornecidos pelo usuário, gera um artigo,
+    valida ajustes, publica e notifica.
+
+  symbiotes:
+    - "process_manager"
+    - "article_writer"
+
+  context_keys:
+    - "materials"
+    - "article_brief"
+    - "article_draft"
+    - "article_final"
+    - "publication_result"
+    - "notification_status"
+    - "article_review_feedback"
+
+  steps:
+    - id: "collect_materials"
+      name: "Coleta de materiais"
+      symbiote: "process_manager"
+      command: "collect_materials"
+      inputs: []
+      outputs:
+        - "materials"
+
+    - id: "collect_details"
+      name: "Coleta detalhes sobre o estilo"
+      symbiote: "process_manager"
+      command: "collect_details"
+      inputs: []
+      outputs:
+        - "article_brief"
+
+    - id: "write_article"
+      name: "Escrita do artigo"
+      symbiote: "article_writer"
+      command: "write_article"
+      inputs:
+        - "materials"
+        - "article_brief"
+      outputs:
+        - "article_draft"
+
+    - id: "validate_article"
+      name: "Validação do artigo"
+      symbiote: "process_manager"
+      command: "validate_article"
+      inputs:
+        - "article_draft"
+      outputs:
+        - "article_final"
+        - "article_brief"            # caso usuário altere estilo/tom
+        - "article_review_feedback"  # feedback literal (ou vazio)
+
+    - id: "publish_article"
+      name: "Publicação do artigo"
+      symbiote: "process_manager"
+      command: "publish_article"
+      inputs:
+        - "article_final"
+      outputs:
+        - "publication_result"
+
+    - id: "notify_publication"
+      name: "Notificação da publicação"
+      symbiote: "process_manager"
+      command: "notify_publication"
+      inputs:
+        - "publication_result"
+        - "article_final"
+      outputs:
+        - "notification_status"
