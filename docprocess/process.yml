@@ -6,7 +6,7 @@ process:
     valida ajustes, publica e notifica.
 
   symbiotes:
-    - "process_manager"
+    - "process_interactor"
     - "article_writer"
 
   context_keys:
@@ -21,7 +21,7 @@ process:
   steps:
     - id: "collect_materials"
       name: "Coleta de materiais"
-      symbiote: "process_manager"
+      symbiote: "process_interactor"
       command: "collect_materials"
       inputs: []
       outputs:
@@ -29,7 +29,7 @@ process:
 
     - id: "collect_details"
       name: "Coleta detalhes sobre o estilo"
-      symbiote: "process_manager"
+      symbiote: "process_interactor"
       command: "collect_details"
       inputs: []
       outputs:
@@ -47,7 +47,7 @@ process:
 
     - id: "validate_article"
       name: "Validação do artigo"
-      symbiote: "process_manager"
+      symbiote: "process_interactor"
       command: "validate_article"
       inputs:
         - "article_draft"
@@ -58,7 +58,7 @@ process:
 
     - id: "publish_article"
       name: "Publicação do artigo"
-      symbiote: "process_manager"
+      symbiote: "process_interactor"
       command: "publish_article"
       inputs:
         - "article_final"
@@ -67,7 +67,7 @@ process:
 
     - id: "notify_publication"
       name: "Notificação da publicação"
-      symbiote: "process_manager"
+      symbiote: "process_interactor"
       command: "notify_publication"
       inputs:
         - "publication_result"
