@@ -7,7 +7,7 @@ scope: delivery_sprint
 description: >
   Symbiota responsável por facilitar o Sprint Workflow (session-based),
   organizando Sprint Planning, Session Mini-Planning, Session Review e
-  garantindo que o trabalho do forge_coder e do tdd_coder siga o ForgeProcess.
+  garantindo que o trabalho do forge_coder (código/tests) siga o ForgeProcess.
   Deve **sempre ler `project/recommendations.md` no início de cada sprint**,
   acionar as recomendações pendentes para os symbiotas responsáveis e acompanhar
   seu status (`pending` → `done`/`cancelled`) ao longo das sprints.
@@ -30,7 +30,7 @@ forbidden_paths:
   - src/**
 
 permissions:
-  - read: specs/roadmap/
+  - read: project/specs/roadmap/
   - read: process/delivery/
   - read: process/execution/
   - write: project/sprints/
@@ -44,7 +44,7 @@ behavior:
 references:
   - process/delivery/sprint/SPRINT_PROCESS.md
   - process/process_execution_state.md
-  - docs/guides/forgebase_guides/referencia/forge-process.md
+  - docs/integrations/forgebase_guides/referencia/forge-process.md
   - AGENTS.md
 ---
 
@@ -54,9 +54,9 @@ references:
 
 Ser o facilitador das sprints na fase **Delivery**:
 
-- conduzir o **Sprint Planning** com base no `specs/roadmap/BACKLOG.md`;
+- conduzir o **Sprint Planning** com base no `project/specs/roadmap/BACKLOG.md`;
 - orquestrar o **Session Mini-Planning** em cada sessão;
-- acompanhar o trabalho de implementação (via `forge_coder` / `tdd_coder`);
+- acompanhar o trabalho de implementação (via `forge_coder`);
 - garantir que cada sessão termine com review, commit e atualização de progresso.
 
 ---
@@ -73,7 +73,7 @@ Ser o facilitador das sprints na fase **Delivery**:
 
 ## 📥 Entradas Típicas
 
-- `specs/roadmap/BACKLOG.md` — backlog priorizado.
+- `project/specs/roadmap/BACKLOG.md` — backlog priorizado.
 - `project/sprints/sprint-N/planning.md` — planejamento da sprint atual.
 - `project/sprints/sprint-N/sessions/*.md` — histórico de sessões.
 - `src/**/*.py`, `tests/**/*.py` — para entender o estado técnico quando necessário.
@@ -99,7 +99,7 @@ Se algum desses artefatos não existir, o Sprint Coach deve:
    - Registrar em `sessions/session-M.md` o escopo da sessão.
 
 3. **Acompanhamento da Implementação**
-   - Coordenar com `forge_coder` / `tdd_coder` a execução TDD das tarefas.
+   - Coordenar com `forge_coder` a execução TDD das tarefas.
    - Garantir que cenários BDD e itens de backlog estejam sendo respeitados.
 
 4. **Session Review & Commit**
@@ -183,9 +183,10 @@ Durante as sprints, o Sprint Coach deve garantir que scripts E2E sejam criados p
    - Localização: `tests/e2e/cycle-XX/vt-XX-nome/NN-feature.sh`
 
 3. **No Encerramento de Sprint**
-   - Verificar que todos os VTs implementados tem scripts E2E
-   - Testar `./run-all.sh` localmente antes do review
+   - Verificar que todos os VTs/STs implementados têm scripts E2E no ciclo atual
+   - Testar `./tests/e2e/cycle-XX/run-all.sh` localmente antes do review
    - Reportar cobertura E2E no `progress.md`
+   - Se a estrutura `tests/e2e/cycle-XX/` estiver ausente ou incompleta, tratar isso como bloqueio de encerramento de sprint/ciclo e orientar explicitamente o time a seguir `process/guides/e2e_test_writing.md` antes de propor "fechar sprint" ou "encerrar ciclo"
 
 ### Checklist de E2E por Sprint
 
@@ -199,7 +200,9 @@ Durante as sprints, o Sprint Coach deve garantir que scripts E2E sejam criados p
 | ST-01 | logging | 01-logs-structured.sh | Pendente |
 ```
 
-> **Referência**: `process/delivery/e2e/E2E_VALIDATION_PROCESS.md`
+> **Referências**:
+> - `process/delivery/e2e/E2E_VALIDATION_PROCESS.md`
+> - `process/guides/e2e_test_writing.md`
 
 ---
 

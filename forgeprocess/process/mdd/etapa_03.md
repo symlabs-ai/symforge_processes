@@ -16,8 +16,8 @@ O resultado é um **documento de apresentação (.md)** renderizado em **HTML in
 
 | Tipo         | Artefato                                     | Descrição                                                                                                                                                                           |
 | ------------ | -------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Entradas** | `docs/visao.md`, `docs/sumario_executivo.md` | Documentos base que contêm a essência da visão e o plano estratégico.                                                                                                               |
-| **Saída**    | `docs/pitch_deck.md`                         | Documento que organiza o conteúdo da visão e do sumário em formato narrativo e visual. O MDD Publisher gera automaticamente a versão HTML em `project/output/docs/pitch_deck.html`. |
+| **Entradas** | `project/docs/visao.md`, `project/docs/sumario_executivo.md` | Documentos base que contêm a essência da visão e o plano estratégico.                                                                                                               |
+| **Saída**    | `project/docs/pitch_deck.md`                         | Documento que organiza o conteúdo da visão e do sumário em formato narrativo e visual. O MDD Publisher gera automaticamente a versão HTML em `project/output/docs/pitch_deck.html`. |
 | **Entrega**  | `docs/pitch_deck_gamma_prompt.md`            | Prompt texto para geração de slides no Gamma.app (sem tags XML/HTML; não inventar números/seções além do script). |
 
 📁 **Template:** `process/templates/template_pitch_deck.md`
@@ -70,7 +70,7 @@ O conteúdo do `pitch_deck.md` é estruturado em blocos narrativos:
 
 ---
 
-*Documento gerado pelo symbiota MDD Coach a partir de `docs/visao.md` e `docs/sumario_executivo.md`.*
+*Documento gerado pelo symbiota MDD Coach a partir de `project/docs/visao.md` e `project/docs/sumario_executivo.md`.*
 ```
 
 ---
@@ -115,7 +115,7 @@ Um bom pitch deve:
 
 ## 🔁 Fluxo Simbiótico Simplificado
 
-1. O MDD Coach importa conteúdo de `docs/visao.md` e `docs/sumario_executivo.md`.
+1. O MDD Coach importa conteúdo de `project/docs/visao.md` e `project/docs/sumario_executivo.md`.
 2. Conduz a criação do `docs/pitch_deck.md` com estrutura narrativa.
 3. O MDD Publisher detecta o arquivo, aplica o template e executa o script `export_pitch_html.py`.
 4. O resultado é salvo em `project/output/docs/pitch_deck.html`.

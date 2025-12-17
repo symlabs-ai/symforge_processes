@@ -35,7 +35,7 @@ phases:
           Definir frequência de sessões.
           Identificar riscos.
         inputs:
-          - path: "specs/roadmap/BACKLOG.md"
+          - path: "project/specs/roadmap/BACKLOG.md"
             description: "Backlog priorizado"
         outputs:
           - path: "project/sprints/sprint-N/planning.md"

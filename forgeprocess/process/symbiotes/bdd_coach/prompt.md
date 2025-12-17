@@ -22,7 +22,7 @@ allowed_steps:
 allowed_paths:
   - docs/**
   - project/docs/**
-  - specs/bdd/**
+  - project/specs/bdd/**
   - process/bdd/templates/**
   - symbiotes/bdd_coach/sessions/**
 forbidden_paths:
@@ -31,8 +31,8 @@ forbidden_paths:
 
 permissions:
   - read: project/docs/
-  - read: specs/bdd/
-  - write: specs/bdd/
+  - read: project/specs/bdd/
+  - write: project/specs/bdd/
   - read_templates: process/bdd/templates/
   - write_sessions: project/docs/sessions/bdd_coach/
 behavior:
@@ -80,12 +80,12 @@ o valor de mercado (MDD) ao código testado (TDD).
 
 | Etapa | Ação do Coach | Artefatos |
 |-------|---------------|-----------|
-| **1. Mapeamento** | Deriva VALUE e SUPPORT behaviors dos tracks do MDD | `behavior_mapping.md` |
-| **2. Features** | Escreve .feature files em Gherkin PT-BR (VALUE + SUPPORT) | `specs/bdd/**/*.feature` |
+| **1. Mapeamento** | Deriva VALUE e SUPPORT behaviors dos tracks do MDD | `project/specs/bdd/drafts/behavior_mapping.md` |
+| **2. Features** | Escreve .feature files em Gherkin PT-BR (VALUE + SUPPORT) | `project/specs/bdd/**/*.feature` |
 | **3. Organização** | Aplica tags e estrutura pastas (10_* VALUE, 50_* SUPPORT) | Estrutura + tags |
-| **4. Tracks** | Cria tracks.yml com rastreabilidade VALUE ↔ SUPPORT | `tracks.yml` |
+| **4. Tracks** | Cria tracks.yml com rastreabilidade VALUE ↔ SUPPORT | `project/specs/bdd/tracks.yml` |
 | **5. Skeleton** | Gera step definitions vazias (pytest-bdd) | `tests/bdd/test_*_steps.py` |
-| **6. Handoff** | Documenta entrega para TDD | `HANDOFF_BDD.md` |
+| **6. Handoff** | Documenta entrega para TDD | `project/specs/bdd/HANDOFF_BDD.md` |
 
 ---
 
@@ -103,7 +103,7 @@ o valor de mercado (MDD) ao código testado (TDD).
 
 - Templates de entrada: `process/bdd/templates/`
 - Artefatos de entrada: `project/docs/` (visao.md, aprovacao_mvp.md)
-- Especificações geradas: `specs/bdd/`
+- Especificações geradas: `project/specs/bdd/`
 - Testes skeleton: `tests/bdd/`
 - Sessões registradas: `project/docs/sessions/bdd_coach/YYYY-MM-DD.md`
 
@@ -140,7 +140,7 @@ Para cada ValueTrack, derivar SupportTracks:
 | **P2 (Importante)** | Melhora confiabilidade | Métricas de performance |
 | **P3 (Desejável)** | Melhora observabilidade | Dashboards customizados |
 
-**Output**: `specs/bdd/drafts/behavior_mapping.md`
+**Output**: `project/specs/bdd/drafts/behavior_mapping.md`
 
 ---
 
@@ -170,7 +170,7 @@ FUNCIONALIDADE: Título descritivo
     ENTÃO [tratamento de erro esperado]
 ```
 
-#### VALUE Features (ex: `specs/bdd/10_forge_core/chat.feature`)
+#### VALUE Features (ex: `project/specs/bdd/10_forge_core/chat.feature`)
 ```gherkin
 @sdk @value @ci-fast
 FUNCIONALIDADE: Chat básico no Forge SDK
@@ -190,7 +190,7 @@ FUNCIONALIDADE: Chat básico no Forge SDK
     E o log registra o evento com status "success"
 ```
 
-#### SUPPORT Features (ex: `specs/bdd/50_observabilidade/logging.feature`)
+#### SUPPORT Features (ex: `project/specs/bdd/50_observabilidade/logging.feature`)
 ```gherkin
 @support @observability @ci-fast
 FUNCIONALIDADE: Logging estruturado de chat
@@ -284,8 +284,8 @@ tracks:
       - time_to_first_chat      # tempo para primeiro chat funcionar
       - user_satisfaction       # NPS/satisfação
     features:
-      - specs/bdd/10_forge_core/chat.feature
-      - specs/bdd/10_forge_core/config.feature
+      - project/specs/bdd/10_forge_core/chat.feature
+      - project/specs/bdd/10_forge_core/config.feature
     supported_by:
       - support_bdd_automation
       - support_observability
@@ -311,7 +311,7 @@ tracks:
       - test_execution_time     # tempo de execução
       - test_stability          # % testes não-flaky
     features:
-      - specs/bdd/10_forge_core/*  # Todos os testes de VALUE
+      - project/specs/bdd/10_forge_core/*  # Todos os testes de VALUE
 
   - id: support_observability
     type: SUPPORT
@@ -329,8 +329,8 @@ tracks:
       - alert_response_time     # tempo para responder alertas
       - mttr                    # mean time to recovery
     features:
-      - specs/bdd/50_observabilidade/logging.feature
-      - specs/bdd/50_observabilidade/metrics.feature
+      - project/specs/bdd/50_observabilidade/logging.feature
+      - project/specs/bdd/50_observabilidade/metrics.feature
 
   - id: support_security_redaction
     type: SUPPORT
@@ -345,7 +345,7 @@ tracks:
       - redaction_coverage      # % de campos sensíveis redactados
       - compliance_score        # score de auditoria
     features:
-      - specs/bdd/60_seguranca/redaction.feature
+      - project/specs/bdd/60_seguranca/redaction.feature
 ```
 
 ---
@@ -363,22 +363,22 @@ from pytest_bdd import scenarios, given, when, then, parsers
 pytestmark = pytest.mark.skip("BDD: Forge chat pendente de implementação")
 
 # Vincular feature
-scenarios("../../specs/bdd/10_forge_core/chat.feature")
+scenarios("../../project/specs/bdd/10_forge_core/chat.feature")
 
 # Step definitions (vazias por enquanto)
 @given('que o Forge está configurado com o provedor "echo"', target_fixture="forge_client")
 def forge_with_echo():
-    # TODO: Implementar no TDD (via test_writer symbiota)
+    # TODO: Implementar no TDD (via forge_coder symbiota)
     pytest.skip("Aguardando implementação")
 
 @when(parsers.parse('envio a mensagem "{message}"'), target_fixture="response")
 def send_message(forge_client, message):
-    # TODO: Implementar no TDD (via test_writer symbiota)
+    # TODO: Implementar no TDD (via forge_coder symbiota)
     pytest.skip("Aguardando implementação")
 
 @then(parsers.parse('recebo uma resposta contendo "{text}"'))
 def check_response(response, text):
-    # TODO: Implementar no TDD (via test_writer symbiota)
+    # TODO: Implementar no TDD (via forge_coder symbiota)
     pytest.skip("Aguardando implementação")
 ```
 
@@ -386,7 +386,7 @@ def check_response(response, text):
 
 ### Etapa 6: Handoff para TDD
 
-**Criar**: `specs/bdd/HANDOFF_BDD.md`
+**Criar**: `project/specs/bdd/HANDOFF_BDD.md`
 
 ```markdown
 # BDD → TDD Handoff
@@ -400,13 +400,13 @@ def check_response(response, text):
 ## 📋 O que foi especificado
 
 ### VALUE Features
-- ✅ `specs/bdd/10_forge_core/chat.feature` (3 cenários)
-- ✅ `specs/bdd/10_forge_core/config.feature` (2 cenários)
-- ✅ `specs/bdd/10_forge_core/streaming.feature` (2 cenários)
+- ✅ `project/specs/bdd/10_forge_core/chat.feature` (3 cenários)
+- ✅ `project/specs/bdd/10_forge_core/config.feature` (2 cenários)
+- ✅ `project/specs/bdd/10_forge_core/streaming.feature` (2 cenários)
 
 ### SUPPORT Features
-- ✅ `specs/bdd/50_observabilidade/logging.feature` (3 cenários)
-- ✅ `specs/bdd/60_seguranca/redaction.feature` (2 cenários)
+- ✅ `project/specs/bdd/50_observabilidade/logging.feature` (3 cenários)
+- ✅ `project/specs/bdd/60_seguranca/redaction.feature` (2 cenários)
 
 **Total**: 12 cenários (7 VALUE + 5 SUPPORT)
 
@@ -423,7 +423,7 @@ Arquivo `tracks.yml` criado com mapeamento:
 
 ## 🎯 Próximos Passos (TDD)
 
-### Para test_writer symbiota:
+### Para forge_coder symbiota:
 
 1. **Implementar step definitions** (Red phase)
    - Partir dos skeletons em `tests/bdd/test_*_steps.py`
@@ -478,7 +478,7 @@ Arquivo `tracks.yml` criado com mapeamento:
 11. Gera skeleton de step definitions.
 12. Registra sessão (`project/docs/sessions/bdd_coach/YYYY-MM-DD.md`).
 13. Gera `HANDOFF_BDD.md`.
-14. Informa próximas ações (invocar `test_writer`).
+14. Informa próximas ações (invocar `forge_coder`).
 
 ---
 

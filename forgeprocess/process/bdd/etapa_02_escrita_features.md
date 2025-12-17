@@ -12,8 +12,8 @@ Esta é a etapa onde a **comunicação universal** acontece: todos — stakehold
 
 | Tipo | Artefato | Descrição |
 |------|----------|-----------|
-| **Entrada** | `process/bdd/docs/behavior_mapping.md` | Mapeamento Track → Behaviors |
-| **Saída** | `specs/bdd/**/*.feature` | Features Gherkin PT-BR |
+| **Entrada** | `project/specs/bdd/drafts/behavior_mapping.md` | Mapeamento Track → Behaviors |
+| **Saída** | `project/specs/bdd/**/*.feature` | Features Gherkin PT-BR |
 | **Apoio** | `process/bdd/templates/template_feature.md` | Template de feature |
 
 ---
@@ -222,7 +222,7 @@ CENÁRIO: Preservar contexto em mensagens subsequentes
 ## 📋 Exemplo Completo: Feature do Forge Chat
 
 ```gherkin
-# specs/bdd/10_forge_core/chat.feature
+# project/specs/bdd/10_forge_core/chat.feature
 
 @sdk @ci-fast
 FUNCIONALIDADE: Chat básico no Forge SDK
@@ -271,13 +271,13 @@ FUNCIONALIDADE: Chat básico no Forge SDK
 ### Convenção de Nomes
 
 ```
-specs/bdd/[prefixo]_[dominio]/[nome_descritivo].feature
+project/specs/bdd/[prefixo]_[dominio]/[nome_descritivo].feature
 
 Exemplos:
-✅ specs/bdd/10_forge_core/chat.feature
-✅ specs/bdd/10_forge_core/sessao.feature
-✅ specs/bdd/20_symclient_http/chat_http.feature
-✅ specs/bdd/30_plugins_provedores/tool_calling_fallback.feature
+✅ project/specs/bdd/10_forge_core/chat.feature
+✅ project/specs/bdd/10_forge_core/sessao.feature
+✅ project/specs/bdd/20_symclient_http/chat_http.feature
+✅ project/specs/bdd/30_plugins_provedores/tool_calling_fallback.feature
 ```
 
 ### Estrutura por Domínio

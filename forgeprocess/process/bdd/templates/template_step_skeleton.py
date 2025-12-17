@@ -24,7 +24,7 @@ pytestmark = pytest.mark.skip("BDD ([nome da feature]) pendente de implementaç�
 # Vincular feature Gherkin
 # ===========================
 # Ajustar o caminho relativo para a feature correspondente
-scenarios("../../specs/bdd/[prefixo]_[dominio]/[nome].feature")
+scenarios("../../project/specs/bdd/[prefixo]_[dominio]/[nome].feature")
 
 # ===========================
 # FIXTURES ESPECÍFICAS (se necessário)

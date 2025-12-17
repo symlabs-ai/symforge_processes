@@ -65,3 +65,6 @@ Os IDs devem ser usados em:
 - `feedback.02.feedback_analyze` — Analisar feedback.
 - `feedback.03.cycle_decisions` — Decisões de ciclo (mudar visão, continuar, encerrar).
 
+## 9. Delivery — E2E CLI-first
+
+- `delivery.e2e.01.cli_validation` — Gate de validação E2E CLI-first do ciclo atual (`tests/e2e/cycle-XX/run-all.sh`), garantindo que o ciclo não seja marcado como completo sem a suíte E2E CLI-first implementada e executada.

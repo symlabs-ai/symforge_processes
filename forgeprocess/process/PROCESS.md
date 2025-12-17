@@ -13,7 +13,7 @@ Após inicializar seu projeto com `symforge init -p forgeprocess <nome-projeto>`
 O ForgeProcess começa com uma **hipótese de mercado**. Antes de qualquer código,
 você precisa documentar a oportunidade que pretende explorar.
 
-1. Abra o arquivo `docs/hipotese.md` (criado automaticamente a partir do template)
+1. Abra o arquivo `project/docs/hipotese.md` (criado automaticamente a partir do template)
 2. Preencha as seções seguindo o guia do template
 3. Execute `symforge start` para iniciar o processo
 
@@ -30,14 +30,14 @@ symforge decide <opcao> # Registra decisão
 ### Fluxo do Processo
 
 ```
-docs/hipotese.md → MDD (validação) → BDD (comportamentos) → Execution (código) → Delivery
+project/docs/hipotese.md → MDD (validação) → BDD (comportamentos) → Execution (código) → Delivery
 ```
 
 ### Documentação
 
 - `process/PROCESS.md` — Este documento (especificação completa)
 - `process/README.md` — Guia rápido
-- `process/mdd/templates/` — Templates para cada etapa
+- `process/templates/` — Templates para cada etapa
 
 ---
 
@@ -107,8 +107,8 @@ o ForgeProcess adota um modelo de **tres dimensoes independentes**:
 4. **Use ranges, nunca valores fixos**: "3-5 dias" e melhor que "4 dias"
 
 **Onde registrar**:
-- Estimativas por feature: `specs/roadmap/estimates.yml` (campos `custo`, `esforco`, `prazo`)
-- Consolidacao por ciclo: `specs/roadmap/CYCLE_PLAN.md`
+- Estimativas por feature: `project/specs/roadmap/estimates.yml` (campos `custo`, `esforco`, `prazo`)
+- Consolidacao por ciclo: `project/specs/roadmap/CYCLE_PLAN.md`
 - Tracking: `process/state/forgeprocess_state.yml` (secao `metricas`)
 
 Referencia completa: `docs/users/literature/forgeprocess-metricas-hibridas.md`
@@ -144,12 +144,12 @@ O ForgeProcess opera em **fases integradas**, cada uma representando um nível d
 > - Durante o Roadmap Planning (Subetapa 6), os ValueTracks são **alocados em ciclos**
 >   para dar visão macro do produto completo.
 > - Isso responde: "Quantos ciclos para terminar o produto?" e "Qual o esforço total?"
-> - Artefato: `specs/roadmap/CYCLE_PLAN.md`
+> - Artefato: `project/specs/roadmap/CYCLE_PLAN.md`
 > - Estado: `process/state/forgeprocess_state.yml` (seção `cycle_planning`)
 
 > **Nota Importante sobre estrutura:**
 > - Este repositório contém apenas a **documentação padrão** do ForgeProcess, em `processes/forgeprocess/...`.
-> - Referências a `process/...`, `specs/...` e `project/...` descrevem a **estrutura alvo** de um projeto que adota o ForgeProcess (por exemplo, criada via `symforge init -p forgeprocess myproject`).
+> - Referências a `process/...` e `project/...` (incluindo `project/specs/...`) descrevem a **estrutura alvo** de um projeto que adota o ForgeProcess (por exemplo, criada via `symforge init -p forgeprocess myproject`).
 > - MDD e BDD são **processos independentes e detalhados**:
 >   - **MDD Process**: `process/mdd/MDD_process.md` (6 etapas)
 >   - **BDD Process**: `process/bdd/BDD_PROCESS.md` (6 subetapas)
@@ -399,7 +399,7 @@ O BDD é a **ponte entre valor validado (MDD) e código testado (TDD)**. Ele tra
 
 ```
 1. Mapeamento de Comportamentos  → behavior_mapping.md
-2. Escrita de Features Gherkin   → specs/bdd/**/*.feature
+2. Escrita de Features Gherkin   → project/specs/bdd/**/*.feature
 3. Organização e Tagging         → Estrutura + tags
 4. Criação de tracks.yml         → Rastreabilidade
 5. Skeleton de Automação         → tests/bdd/test_*_steps.py
@@ -407,10 +407,10 @@ O BDD é a **ponte entre valor validado (MDD) e código testado (TDD)**. Ele tra
 ```
 
 #### Artefatos Principais
-- **Features Gherkin**: Arquivos `.feature` (PT-BR, tags, estrutura padrão Forge)
-- **tracks.yml**: Mapeia features → ValueTracks → métricas
+- **Features Gherkin**: Arquivos `.feature` em `project/specs/bdd/**` (PT-BR, tags, estrutura padrão Forge)
+- **tracks.yml**: Mapeia features → ValueTracks → métricas em `project/specs/bdd/tracks.yml`
 - **Step definitions**: Skeleton pytest-bdd (inicialmente com `@skip`)
-- **HANDOFF.md**: Documentação de entrega para TDD
+- **HANDOFF.md**: Documentação de entrega para TDD (`project/specs/bdd/HANDOFF_BDD.md`)
 
 #### ⚠️ MVP Exception Policy (NEW - 2025-11-06)
 
@@ -431,7 +431,7 @@ O BDD é a **ponte entre valor validado (MDD) e código testado (TDD)**. Ele tra
 #### Exemplo: Feature File (Padrão Forge)
 
 ```gherkin
-# specs/bdd/10_forge_core/chat.feature
+# project/specs/bdd/10_forge_core/chat.feature
 
 @sdk @ci-fast
 FUNCIONALIDADE: Chat básico no Forge SDK
@@ -467,9 +467,9 @@ Cada **CENÁRIO** Gherkin:
 
 #### Ferramentas e Estrutura
 - **Framework**: pytest-bdd >= 6.1.1
-- **Especificação**: `specs/bdd/**/*.feature`
+- **Especificação**: `project/specs/bdd/**/*.feature`
 - **Automação**: `tests/bdd/test_*_steps.py`
-- **Rastreabilidade**: `specs/bdd/tracks.yml`
+- **Rastreabilidade**: `project/specs/bdd/tracks.yml`
 
 #### Documentação Completa do Processo BDD
 
@@ -591,10 +591,10 @@ Feature: Invoice issuance
 Transformar as especificações BDD em um plano de ação técnico e executável. Esta fase garante que, antes de escrever o código, a equipe tenha um consenso sobre a arquitetura, as dependências e a ordem de implementação.
 
 #### Artefatos Principais
-- **`specs/roadmap/ADR.md`**: Registros de Decisões de Arquitetura (Architecture Decision Records).
-- **`specs/roadmap/HLD.md` / `LLD.md`**: High-Level e Low-Level Design da solução técnica.
-- **`specs/roadmap/ROADMAP.md`**: A visão executiva do plano, com fases e marcos.
-- **`specs/roadmap/BACKLOG.md`**: O backlog detalhado e priorizado, pronto para ser consumido pelo time de desenvolvimento nos sprints.
+- **`project/specs/roadmap/ADR.md`**: Registros de Decisões de Arquitetura (Architecture Decision Records).
+- **`project/specs/roadmap/HLD.md` / `LLD.md`**: High-Level e Low-Level Design da solução técnica.
+- **`project/specs/roadmap/ROADMAP.md`**: A visão executiva do plano, com fases e marcos.
+- **`project/specs/roadmap/BACKLOG.md`**: O backlog detalhado e priorizado, pronto para ser consumido pelo time de desenvolvimento nos sprints.
 
 ---
 
@@ -1035,13 +1035,13 @@ IA pode:
 - **process/delivery/PROCESS.md**: Delivery (Sprints + Review & Feedback)
 
 ### Templates
-- **process/mdd/templates/**: Templates para artefatos MDD (hipótese, visão, sumário, etc)
+- **process/templates/**: Templates para artefatos MDD (hipótese, visão, sumário, etc)
 - **process/bdd/templates/**: Templates para artefatos BDD (features, tracks.yml, steps, etc)
 
 ### Especificações
-- **specs/bdd/**: Features Gherkin (PT-BR) com estrutura padronizada
-- **specs/bdd/tracks.yml**: Mapeamento features → ValueTracks → métricas
-- **specs/bdd/HANDOFF.md**: Instruções de handoff BDD → TDD
+- **project/specs/bdd/**: Features Gherkin (PT-BR) com estrutura padronizada
+- **project/specs/bdd/tracks.yml**: Mapeamento features → ValueTracks → métricas
+- **project/specs/bdd/HANDOFF.md**: Instruções de handoff BDD → TDD
 
 ### Outros Documentos
 - **ADR-006**: ForgeProcess Integration (detalhes técnicos)
@@ -1111,7 +1111,7 @@ project/                          ← Artefatos do projeto
     ├── sites/                    ← MDD Etapa 4
     └── aprovacao_mvp.md          ← MDD Etapa 5 (decisão)
 
-specs/                            ← Especificações BDD
+project/specs/                    ← Especificações BDD
 └── bdd/
     ├── 00_glossario.md           ← Linguagem ubíqua
     ├── tracks.yml                ← Rastreabilidade

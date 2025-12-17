@@ -59,7 +59,7 @@ IDs canônicos estão em:
 
 Cada symbiota declara um manifesto no front‑matter do `prompt.md`:
 
-- Ex.: `symbiotes/tdd_coder/prompt.md`
+- Ex.: `symbiotes/forge_coder/prompt.md`
 
 Campos importantes:
 - `symbiote_id`
@@ -79,9 +79,9 @@ Esquema completo do manifest:
 
 ## 4. Protocolo mínimo de orquestração (LLM)
 
-Fluxo recomendado (detalhado em `docs/LLM_ORCHESTRATION_GUIDE.md`):
+Fluxo recomendado (detalhado em `process/docs/LLM_ORCHESTRATION_GUIDE.md`):
 
-1. **Ler estado** em `state/forgeprocess_state.yml`.
+1. **Ler estado** em `process/state/forgeprocess_state.yml`.
 2. **Ler resumo da fase** correspondente (`SUMMARY_FOR_AGENTS.md`).
 3. **Ler definição da etapa** (bloco “ID da etapa: ...” no `*_PROCESS.md`).
 4. **Aplicar manifesto** do symbiota ativo:
@@ -112,4 +112,3 @@ Se nenhuma regra for suficiente, registre a dúvida em linguagem natural
 no contexto da sessão (ou em `project/docs/sessions/<symbiota>/...`) e
 aguarde intervenção humana ou de outro symbiota de coordenação (como
 `execution_coach`, `delivery_coach` ou `jorge_forge`).
-

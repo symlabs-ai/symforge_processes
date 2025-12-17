@@ -88,8 +88,10 @@ process/
         ├── PROCESS.md                       ← Este documento (overview de delivery)
         ├── sprint/
         │     └── SPRINT_PROCESS.md
-        └── review/
-              └── REVIEW_PROCESS.md
+        ├── review/
+        │     └── REVIEW_PROCESS.md
+        └── e2e/
+              └── E2E_VALIDATION_PROCESS.md
 ```
 
 > Este repositório guarda esses arquivos em `processes/forgeprocess/delivery/...`.
@@ -97,6 +99,21 @@ process/
 > copiar esse conteúdo para `process/delivery/` com o layout mostrado acima.
 
 ---
+
+## 3️⃣ E2E CLI-first – "O gate final antes de encerrar ciclo"
+
+Embora a validação técnica (pytest, BDD) e de processo (reviews) seja necessária,
+o ForgeProcess também exige um **gate E2E CLI-first por ciclo**:
+
+- Scripts E2E em `tests/e2e/cycle-XX/` escritos conforme
+  `process/guides/e2e_test_writing.md`;
+- Execução de `./tests/e2e/cycle-XX/run-all.sh` com credenciais reais;
+- Evidências geradas em `tests/e2e/cycle-XX/evidence/`;
+- Ligação clara com ValueTracks/SupportTracks do ciclo atual.
+
+O subprocesso `process/delivery/e2e/PROCESS.yml` modela esse gate como parte
+explícita do fluxo de Delivery, garantindo que **não exista caminho feliz
+para "deployed" sem passar pela validação E2E CLI-first.
 
 ## 🔗 Relação com o PROCESS.md raiz
 

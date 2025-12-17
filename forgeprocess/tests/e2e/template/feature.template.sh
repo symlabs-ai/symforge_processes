@@ -3,7 +3,7 @@
 # [NN]-[feature-name].sh — Teste E2E de Feature
 # =============================================================================
 # Feature: [Nome da Feature]
-# BDD: specs/bdd/[prefix]_[domain]/[feature].feature
+# BDD: project/specs/bdd/[prefix]_[domain]/[feature].feature
 #
 # Este script testa a feature via CLI com integracoes reais.
 #
@@ -48,7 +48,7 @@ check_cli "myapp" "pip install -e ."
 # =============================================================================
 
 echo "Feature: [Nome da Feature]"
-echo "BDD: specs/bdd/[prefix]_[domain]/[feature].feature"
+echo "BDD: project/specs/bdd/[prefix]_[domain]/[feature].feature"
 echo ""
 
 # -----------------------------------------------------------------------------

@@ -25,8 +25,8 @@ narrative: |-
 project_layout:
   required_dirs:
     - "process/"
-    - "specs/"
     - "project/"
+    - "project/specs/"
     - "src/"
     - "tests/"
   optional_dirs:
@@ -45,8 +45,8 @@ getting_started:
     Este processo guia você desde a concepção da ideia até a entrega,
     medindo progresso em valor de negócio, não em tempo ou tarefas.
   first_file:
-    template: "process/mdd/templates/template_hipotese.md"
-    destination: "docs/hipotese.md"
+    template: "process/templates/template_hipotese.md"
+    destination: "project/docs/hipotese.md"
     description: "Hipótese de mercado - ponto de partida do processo"
   next_steps:
     - "Execute 'symforge start' ou 'symforge tui' para começar"
@@ -56,7 +56,7 @@ getting_started:
       description: "Especificação completa do processo (inclui Getting Started)"
     - path: "process/README.md"
       description: "Guia rápido"
-    - path: "process/mdd/templates/"
+    - path: "process/templates/"
       description: "Templates para cada etapa"
 
 # Declaração de subprocessos que podem ser invocados
@@ -186,22 +186,22 @@ artifacts:
     description: "Documento de visão com ValueTracks, SupportTracks e KPIs"
 
   - id: features_bdd
-    path: "specs/bdd/**/*.feature"
+    path: "project/specs/bdd/**/*.feature"
     phase: bdd
     description: "Features Gherkin descrevendo comportamentos"
 
   - id: tracks_yml
-    path: "specs/bdd/tracks.yml"
+    path: "project/specs/bdd/tracks.yml"
     phase: bdd
     description: "Mapeamento de rastreabilidade"
 
   - id: roadmap
-    path: "specs/roadmap/ROADMAP.md"
+    path: "project/specs/roadmap/ROADMAP.md"
     phase: execution
     description: "Visão executiva do plano de implementação"
 
   - id: backlog
-    path: "specs/roadmap/BACKLOG.md"
+    path: "project/specs/roadmap/BACKLOG.md"
     phase: execution
     description: "Backlog priorizado"
 
@@ -251,3 +251,7 @@ quality_metrics:
   - name: e2e_coverage_minimum
     target: ">= 1 cenário @e2e passando por ValueTrack crítico antes de encerrar o ciclo"
     description: "Garantir que, para cada ValueTrack que dependa de integrações externas (providers reais, MCPs, etc.), exista pelo menos um cenário BDD marcado com @e2e passando com testes de integração antes de atingir o nó end_ciclo_completo"
+
+  - name: e2e_cli_gate
+    target: "tests/e2e/cycle-XX/ criado e ./tests/e2e/cycle-XX/run-all.sh executado com sucesso para o ciclo atual antes do nó end_ciclo_completo"
+    description: "Garantir que o gate E2E CLI-first por ciclo esteja implementado e validado conforme process/delivery/e2e/E2E_VALIDATION_PROCESS.md e process/guides/e2e_test_writing.md antes de marcar o ciclo como completo"

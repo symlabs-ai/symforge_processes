@@ -17,10 +17,10 @@ Elas seguem uma estrutura narrativa modular, inspirada em sites de storytelling 
 
 | Tipo         | Artefato                                                               | Descrição                                                                                                                                                                                   |
 | ------------ | ---------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Entradas** | `docs/visao.md`, `docs/sumario_executivo.md`, `docs/pitch_deck.md`     | Fornecem o conteúdo base (propósito, valor e diferenciais) para compor as narrativas públicas.                                                                                              |
-| **Saídas**   | `docs/sites/site_A.md`, `docs/sites/site_B.md`, `docs/sites/site_C.md` | Três variações narrativas da proposta de valor (emocional, funcional, social). |
-| **Saídas (HTML)** | `output/docs/sites/site_A.html`, `.../site_B.html`, `.../site_C.html` | Renderizações HTML geradas automaticamente pelo **MDD Publisher** a partir dos `.md` (opcionais, não bloqueiam o fluxo). |
-| **Entregas** | `docs/sites/site_A_gamma_prompt.md` (e B/C)                             | Prompt texto para Gamma.app gerar a landing (sem tags XML/HTML; sem inventar números/conteúdos além do script). |
+| **Entradas** | `project/docs/visao.md`, `project/docs/sumario_executivo.md`, `project/docs/pitch_deck.md`     | Fornecem o conteúdo base (propósito, valor e diferenciais) para compor as narrativas públicas.                                                                                              |
+| **Saídas**   | `project/docs/sites/site_A.md`, `project/docs/sites/site_B.md`, `project/docs/sites/site_C.md` | Três variações narrativas da proposta de valor (emocional, funcional, social). |
+| **Saídas (HTML)** | `project/output/docs/sites/site_A.html`, `.../site_B.html`, `.../site_C.html` | Renderizações HTML geradas automaticamente pelo **MDD Publisher** a partir dos `.md` (opcionais, não bloqueiam o fluxo). |
+| **Entregas** | `project/docs/sites/site_A_gamma_prompt.md` (e B/C)                             | Prompt texto para Gamma.app gerar a landing (sem tags XML/HTML; sem inventar números/conteúdos além do script). |
 
 📁 **Templates:**
 

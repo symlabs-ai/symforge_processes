@@ -339,7 +339,7 @@ Este documento deve ser atualizado:
 
 ## Referencias
 
-- Visao MDD: `docs/visao.md`
-- ValueTracks e SupportTracks: `specs/bdd/tracks.yml`
-- Roadmap de Sprints: `specs/roadmap/ROADMAP.md`
-- Backlog detalhado: `specs/roadmap/BACKLOG.md`
+- Visao MDD: `project/docs/visao.md`
+- ValueTracks e SupportTracks: `project/specs/bdd/tracks.yml`
+- Roadmap de Sprints: `project/specs/roadmap/ROADMAP.md`
+- Backlog detalhado: `project/specs/roadmap/BACKLOG.md`

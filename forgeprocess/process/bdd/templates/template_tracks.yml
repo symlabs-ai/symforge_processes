@@ -16,8 +16,8 @@ tracks:
       - [metrica_2]          # Descrição: [como medir]
       - [metrica_3]          # Descrição: [como medir]
     features:
-      - specs/bdd/[prefixo]_[dominio]/[feature1].feature
-      - specs/bdd/[prefixo]_[dominio]/[feature2].feature
+      - project/specs/bdd/[prefixo]_[dominio]/[feature1].feature
+      - project/specs/bdd/[prefixo]_[dominio]/[feature2].feature
     notes: "[Contexto, justificativa ou links relacionados]"
 
   # Exemplo concreto:
@@ -30,8 +30,8 @@ tracks:
       - tempo_integracao     # tempo até primeiro chat funcionar (< 10min)
       - nps_sdk              # satisfação dos desenvolvedores (> 8/10)
     features:
-      - specs/bdd/10_forge_core/chat.feature
-      - specs/bdd/10_forge_core/config.feature
+      - project/specs/bdd/10_forge_core/chat.feature
+      - project/specs/bdd/10_forge_core/config.feature
     notes: "Baseline mínimo viável. Sem isso, o produto não existe."
 
   # ===========================
@@ -47,7 +47,7 @@ tracks:
       - [metrica_qualidade_1]    # Confiabilidade, performance, etc
       - [metrica_qualidade_2]
     features:
-      - specs/bdd/[prefixo]_[dominio]/[feature].feature
+      - project/specs/bdd/[prefixo]_[dominio]/[feature].feature
     notes: "[Por que este SUPPORT é necessário? Qual VALUE ele habilita?]"
 
   # Exemplo concreto:
@@ -60,7 +60,7 @@ tracks:
       - consistencia         # ausência de vazamento entre sessões (0 falhas)
       - latencia_contexto    # tempo para recuperar histórico (< 100ms)
     features:
-      - specs/bdd/10_forge_core/sessao.feature
+      - project/specs/bdd/10_forge_core/sessao.feature
     notes: "Habilita chat multi-turn. Crítico para VALUE tracks avançados."
 
 
@@ -92,7 +92,7 @@ tracks:
 #   - SUPPORT: qualidade (confiabilidade, performance, cobertura)
 
 # features (array de caminhos):
-#   - Caminho relativo a partir de specs/bdd/
+#   - Caminho relativo a partir de project/specs/bdd/
 #   - Uma feature pode estar em múltiplos tracks
 
 # ===========================

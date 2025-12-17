@@ -15,7 +15,7 @@ Esta etapa **NÃO implementa** os testes — apenas prepara o esqueleto.
 
 | Tipo | Artefato | Descrição |
 |------|----------|-----------|
-| **Entrada** | `specs/bdd/**/*.feature` | Features Gherkin finalizadas |
+| **Entrada** | `project/specs/bdd/**/*.feature` | Features Gherkin finalizadas |
 | **Saída** | `tests/bdd/test_*_steps.py` | Step definitions (vazias) |
 | **Saída** | `tests/bdd/conftest.py` | Fixtures pytest |
 | **Saída** | `pytest.ini` | Configuração de marcadores |
@@ -45,7 +45,7 @@ pytestmark = pytest.mark.skip("BDD (Forge chat) pendente de implementação")
 # ===========================
 # Vincular feature Gherkin
 # ===========================
-scenarios("../../specs/bdd/10_forge_core/chat.feature")
+scenarios("../../project/specs/bdd/10_forge_core/chat.feature")
 
 # ===========================
 # Step Definitions (vazias)
@@ -91,11 +91,11 @@ def check_response_contains(response, text):
 **Convenções de nomenclatura:**
 
 ```
-Feature: specs/bdd/10_forge_core/chat.feature
+Feature: project/specs/bdd/10_forge_core/chat.feature
   ↓
 Step file: tests/bdd/test_forge_chat_steps.py
 
-Feature: specs/bdd/20_symclient_http/errors.feature
+Feature: project/specs/bdd/20_symclient_http/errors.feature
   ↓
 Step file: tests/bdd/test_symclient_http_errors_steps.py
 ```
@@ -255,7 +255,7 @@ addopts =
 # ===========================
 # BDD Específico
 # ===========================
-bdd_features_base_dir = specs/bdd/
+bdd_features_base_dir = project/specs/bdd/
 ```
 
 ---
@@ -296,7 +296,7 @@ pytest-mock>=3.11.0     # Mocking avançado
 ```markdown
 - [ ] Criar arquivo `tests/bdd/test_[nome]_steps.py`
 - [ ] Adicionar `pytestmark = pytest.mark.skip(...)`
-- [ ] Vincular feature: `scenarios("../../specs/bdd/[path]/[feature].feature")`
+- [ ] Vincular feature: `scenarios("../../project/specs/bdd/[path]/[feature].feature")`
 - [ ] Criar step definitions vazias para cada DADO/QUANDO/ENTÃO
 - [ ] Adicionar docstrings com TODO e exemplos
 - [ ] Testar que arquivo roda sem erros: `pytest tests/bdd/test_[nome]_steps.py -v`
@@ -348,7 +348,7 @@ pytest -m ci_fast tests/bdd/ --collect-only
 
 **Feature:**
 ```gherkin
-# specs/bdd/10_forge_core/sessao.feature
+# project/specs/bdd/10_forge_core/sessao.feature
 
 @sdk @contexto @ci-fast
 FUNCIONALIDADE: Gestão de sessões
@@ -371,7 +371,7 @@ from pytest_bdd import scenarios, given, when, then, parsers
 
 pytestmark = pytest.mark.skip("BDD (sessão) pendente de implementação")
 
-scenarios("../../specs/bdd/10_forge_core/sessao.feature")
+scenarios("../../project/specs/bdd/10_forge_core/sessao.feature")
 
 @given(parsers.parse('um session_id "{session_id}"'), target_fixture="session_id")
 def create_session_id(session_id):

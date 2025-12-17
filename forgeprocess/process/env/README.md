@@ -5,13 +5,13 @@ Este diretório concentra os arquivos e instruções para preparar o **ambiente 
 - instalação do **ForgeBase** (núcleo de arquitetura e bases Clean/Hex);
 - configuração de **virtualenv, testes e hooks de pre-commit** (Ruff, pytest, etc.).
 
-Use este guia sempre que for iniciar o trabalho em uma máquina nova ou preparar o ambiente para o `tdd_coder`.
+Use este guia sempre que for iniciar o trabalho em uma máquina nova ou preparar o ambiente para o `forge_coder`.
 
 ---
 
 ## 1. Instalar o ForgeBase
 
-Referência: `docs/guides/forgebase_guides/forgebase_install.md`
+Referência: `docs/integrations/forgebase_guides/forgebase_install.md`
 
 ### 1.1 Instalação rápida (uso como biblioteca)
 
@@ -140,7 +140,7 @@ No `process/process_execution_state.md`, na fase **Execution**:
   - ambiente de testes + pre-commit configurados (`pytest`, `pytest-bdd`, `pre-commit`, `ruff`).
 
 Em resumo:
-**este README.md ensina a montar o ambiente (ForgeBase + testes + pre-commit) necessário para que symbiotas como `tdd_coder` e `forge_coder` possam trabalhar com segurança e dentro das regras do ForgeProcess.**
+**este README.md ensina a montar o ambiente (ForgeBase + testes + pre-commit) necessário para que o symbiota `forge_coder` possa trabalhar com segurança e dentro das regras do ForgeProcess.**
 
 ---
 
@@ -162,7 +162,7 @@ pytest --collect-only tests/bdd -q
 pre-commit run --config pre-commit-config.yaml --all-files
 ```
 
-Se todos os comandos acima rodarem sem erro, o ambiente está pronto para a fase **Execution.tdd** e para o trabalho do `tdd_coder`.
+Se todos os comandos acima rodarem sem erro, o ambiente está pronto para a fase **Execution.tdd** e para o trabalho do `forge_coder` (symbiota unificado de TDD + implementação).
 
 > 💡 **Dica sobre imports em projetos com layout `src/`**
 >

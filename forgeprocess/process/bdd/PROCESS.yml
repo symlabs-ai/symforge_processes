@@ -42,12 +42,12 @@ phases:
           Agrupar comportamentos por domínio.
         spec_file: "etapa_01_mapeamento_comportamentos.md"
         inputs:
-          - path: "docs/visao.md"
+          - path: "project/docs/visao.md"
             description: "Visão do produto (do MDD)"
-          - path: "docs/aprovacao_mvp.md"
+          - path: "project/docs/aprovacao_mvp.md"
             description: "Aprovação formal do MVP"
         outputs:
-          - path: "specs/bdd/drafts/behavior_mapping.md"
+          - path: "project/specs/bdd/drafts/behavior_mapping.md"
             description: "Mapeamento de comportamentos (rascunho)"
         actors:
           - type: symbiota
@@ -65,10 +65,10 @@ phases:
           resultado observável, máximo 5-7 steps por cenário.
         spec_file: "etapa_02_escrita_features.md"
         inputs:
-          - path: "specs/bdd/drafts/behavior_mapping.md"
+          - path: "project/specs/bdd/drafts/behavior_mapping.md"
             description: "Mapeamento de comportamentos"
         outputs:
-          - path: "specs/bdd/**/*.feature"
+          - path: "project/specs/bdd/**/*.feature"
             description: "Arquivos Gherkin com features"
         actors:
           - type: symbiota
@@ -86,12 +86,12 @@ phases:
           Atualizar README com guia de uso.
         spec_file: "etapa_03_organizacao_tagging.md"
         inputs:
-          - path: "specs/bdd/**/*.feature"
+          - path: "project/specs/bdd/**/*.feature"
             description: "Features Gherkin recém-criadas"
         outputs:
-          - path: "specs/bdd/"
+          - path: "project/specs/bdd/"
             description: "Features organizadas por pasta"
-          - path: "specs/bdd/README.md"
+          - path: "project/specs/bdd/README.md"
             description: "Guia de uso atualizado"
         actors:
           - type: symbiota
@@ -106,12 +106,12 @@ phases:
           Cada track deve ter métricas claras.
         spec_file: "etapa_04_tracks_yml.md"
         inputs:
-          - path: "specs/bdd/**/*.feature"
+          - path: "project/specs/bdd/**/*.feature"
             description: "Features organizadas"
-          - path: "docs/visao.md"
+          - path: "project/docs/visao.md"
             description: "ValueTracks originais"
         outputs:
-          - path: "specs/bdd/tracks.yml"
+          - path: "project/specs/bdd/tracks.yml"
             description: "Mapeamento de tracks"
         actors:
           - type: symbiota
@@ -129,7 +129,7 @@ phases:
           Configurar fixtures e pytest.ini.
         spec_file: "etapa_05_skeleton_automacao.md"
         inputs:
-          - path: "specs/bdd/**/*.feature"
+          - path: "project/specs/bdd/**/*.feature"
             description: "Features finalizadas"
         outputs:
           - path: "tests/bdd/test_*_steps.py"
@@ -150,14 +150,14 @@ phases:
           Entregar como entrada para a fase de Roadmap Planning.
         spec_file: "etapa_06_handoff_tdd.md"
         inputs:
-          - path: "specs/bdd/**/*.feature"
+          - path: "project/specs/bdd/**/*.feature"
             description: "Todas as features"
-          - path: "specs/bdd/tracks.yml"
+          - path: "project/specs/bdd/tracks.yml"
             description: "Mapeamento de tracks"
           - path: "tests/bdd/"
             description: "Skeleton de testes"
         outputs:
-          - path: "specs/bdd/HANDOFF_BDD.md"
+          - path: "project/specs/bdd/HANDOFF_BDD.md"
             description: "Documento de handoff"
         actors:
           - type: symbiota
@@ -181,7 +181,7 @@ flow:
   - id: validar_mapeamento
     type: decision
     decision:
-      question: "O mapeamento de ValueTracks em comportamentos (specs/bdd/drafts/behavior_mapping.md) está aprovado?"
+      question: "O mapeamento de ValueTracks em comportamentos (project/specs/bdd/drafts/behavior_mapping.md) está aprovado?"
       decider:
         type: hil
         actor: product_owner
@@ -200,7 +200,7 @@ flow:
   - id: validar_features
     type: decision
     decision:
-      question: "As features Gherkin (specs/bdd/**/*.feature) estão aprovadas?"
+      question: "As features Gherkin (project/specs/bdd/**/*.feature) estão aprovadas?"
       decider:
         type: hil
         actor: product_owner
@@ -298,27 +298,27 @@ flow:
 
 artifacts:
   - id: behavior_mapping
-    path: "specs/bdd/drafts/behavior_mapping.md"
+    path: "project/specs/bdd/drafts/behavior_mapping.md"
     phase: bdd_main
     description: "Mapeamento de comportamentos"
 
   - id: features
-    path: "specs/bdd/**/*.feature"
+    path: "project/specs/bdd/**/*.feature"
     phase: bdd_main
     description: "Features Gherkin"
 
   - id: tracks_yml
-    path: "specs/bdd/tracks.yml"
+    path: "project/specs/bdd/tracks.yml"
     phase: bdd_main
     description: "Mapeamento de tracks"
 
   - id: glossario
-    path: "specs/bdd/00_glossario.md"
+    path: "project/specs/bdd/00_glossario.md"
     phase: bdd_main
     description: "Linguagem ubíqua"
 
   - id: handoff
-    path: "specs/bdd/HANDOFF_BDD.md"
+    path: "project/specs/bdd/HANDOFF_BDD.md"
     phase: bdd_main
     description: "Documento de handoff para Roadmap Planning"
 

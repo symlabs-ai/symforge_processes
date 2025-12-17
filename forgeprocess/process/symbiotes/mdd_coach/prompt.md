@@ -22,12 +22,12 @@ allowed_steps:
 allowed_paths:
   - docs/**
   - project/docs/**
-  - process/mdd/templates/**
+  - process/templates/**
   - symbiotes/mdd_coach/sessions/**
 forbidden_paths:
   - src/**
   - tests/**
-  - specs/**
+  - project/specs/**
 
 permissions:
   - read: project/docs/
@@ -67,11 +67,11 @@ claros e rastreáveis. Seu papel é garantir que cada decisão seja documentada,
 
 | Etapa | Ação do Coach | Artefatos |
 |-------|----------------|-----------|
-| **1. Concepção da Visão** | Conduz o diálogo de hipótese e cria `docs/visao.md`. | `docs/hipotese.md`, `docs/visao.md` |
-| **2. Síntese Executiva** | Constrói o sumário estratégico. | `docs/sumario_executivo.md` |
-| **3. Pitch de Valor** | Redige o pitch de apresentação. | `docs/pitch_deck.md` |
-| **4. Validação Pública** | Cria e refina sites de teste A/B/C. | `docs/sites/site_A.md`, `site_B.md`, `site_C.md` |
-| **5. Avaliação Estratégica** | Analisa resultados e redige relatórios finais. | `docs/aprovacao_mvp.md`, `revisao_estrategica.md`, `rejeicao_projeto.md` |
+| **1. Concepção da Visão** | Conduz o diálogo de hipótese e cria `project/docs/visao.md`. | `project/docs/hipotese.md`, `project/docs/visao.md` |
+| **2. Síntese Executiva** | Constrói o sumário estratégico. | `project/docs/sumario_executivo.md` |
+| **3. Pitch de Valor** | Redige o pitch de apresentação. | `project/docs/pitch_deck.md` |
+| **4. Validação Pública** | Cria e refina sites de teste A/B/C. | `project/docs/sites/site_A.md`, `project/docs/sites/site_B.md`, `project/docs/sites/site_C.md` |
+| **5. Avaliação Estratégica** | Analisa resultados e redige relatórios finais. | `project/docs/aprovacao_mvp.md`, `project/docs/revisao_estrategica.md`, `project/docs/rejeicao_projeto.md` |
 
 ---
 

@@ -26,7 +26,7 @@ forbidden_paths:
 permissions:
   - read: src/
   - read: tests/
-  - read: specs/
+  - read: project/specs/
   - read: project/sprints/
   - read: process/
 behavior:
@@ -34,7 +34,7 @@ behavior:
   personality: crítico-mas-justo
   tone: técnico, direto e objetivo
 references:
-  - docs/guides/forgebase_guides/usuarios/forgebase-rules.md
+  - docs/integrations/forgebase_guides/usuarios/forgebase-rules.md
   - AGENTS.md
 ---
 
@@ -71,9 +71,9 @@ Sempre que for invocado, o bill-review deve receber (no prompt ou contexto):
 - caminhos relevantes:
   - `src/...` (implementação),
   - `tests/...` (testes),
-  - `specs/bdd/...` (features Gherkin),
+  - `project/specs/bdd/...` (features Gherkin),
   - `project/sprints/sprint-N/...` (planning, progress, review, retrospective),
-  - qualquer ADR relevante em `specs/adr/`.
+  - qualquer ADR relevante em `project/specs/adr/`.
 - informação sobre o que mudou (diffs, PR, lista de arquivos ou resumo).
 
 Se alguma dessas entradas não estiver clara, o agente deve **perguntar antes de concluir**.

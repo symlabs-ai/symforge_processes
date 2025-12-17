@@ -28,7 +28,7 @@ allowed_paths:
 forbidden_paths:
   - src/**
   - tests/**
-  - specs/**
+  - project/specs/**
 
 permissions:
   - read: project/docs/
@@ -59,10 +59,10 @@ Seu papel é converter documentos Markdown em **formatos legíveis, distribuíve
 
 | Etapa do MDD                        | Ação do Publisher                                                                  | Formato de Saída                          |
 | ----------------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------- |
-| **Etapa 2 — Síntese Executiva**     | Gera versão PDF do `sumario_executivo.md`.                                         | `output/docs/sumario_executivo.pdf`       |
-| **Etapa 3 — Pitch de Valor**        | Converte `pitch_deck.md` em `.pptx` (via integração com conversor externo).        | `output/docs/pitch_deck.pptx`             |
-| **Etapa 4 — Validação Pública**     | Gera páginas HTML+JSS baseadas nos sites A/B/C.                                    | `output/docs/sites_renderizados/`         |
-| **Etapa 5 — Avaliação Estratégica** | Gera relatórios em PDF e DOCX para decisões de aprovação, revisão ou encerramento. | `output/docs/*.pdf`, `output/docs/*.docx` |
+| **Etapa 2 — Síntese Executiva**     | Gera versão PDF do `sumario_executivo.md`.                                         | `project/output/docs/sumario_executivo.pdf`       |
+| **Etapa 3 — Pitch de Valor**        | Converte `pitch_deck.md` em `.pptx` (via integração com conversor externo).        | `project/output/docs/pitch_deck.pptx`             |
+| **Etapa 4 — Validação Pública**     | Gera páginas HTML+JSS baseadas nos sites A/B/C.                                    | `project/output/docs/sites_renderizados/`         |
+| **Etapa 5 — Avaliação Estratégica** | Gera relatórios em PDF e DOCX para decisões de aprovação, revisão ou encerramento. | `project/output/docs/*.pdf`, `project/output/docs/*.docx` |
 
 ---
 

@@ -31,7 +31,7 @@ forbidden_paths:
   - src/**
 
 permissions:
-  - read: specs/roadmap/
+  - read: project/specs/roadmap/
   - read: process/delivery/
   - read: project/sprints/
   - read: project/docs/
@@ -43,8 +43,10 @@ references:
   - process/delivery/PROCESS.md
   - process/delivery/sprint/SPRINT_PROCESS.md
   - process/delivery/review/REVIEW_PROCESS.md
+  - process/delivery/e2e/E2E_VALIDATION_PROCESS.md
+  - process/guides/e2e_test_writing.md
   - process/process_execution_state.md
-  - docs/guides/forgebase_guides/referencia/forge-process.md
+  - docs/integrations/forgebase_guides/referencia/forge-process.md
   - AGENTS.md
 ---
 
@@ -63,12 +65,14 @@ Coordenar a fase **Delivery** do ForgeProcess:
 
 ## 📥 Entradas Principais
 
-- `specs/roadmap/BACKLOG.md`, `ROADMAP.md`
+- `project/specs/roadmap/BACKLOG.md`, `ROADMAP.md`
 - `project/sprints/sprint-N/planning.md`
 - `project/sprints/sprint-N/progress.md`
 - `project/sprints/sprint-N/review*.md`
 - `process/delivery/sprint/SPRINT_PROCESS.md`
 - `process/delivery/review/REVIEW_PROCESS.md`
+- `process/delivery/e2e/E2E_VALIDATION_PROCESS.md`
+- `process/guides/e2e_test_writing.md`
 
 ---
 
@@ -80,3 +84,4 @@ Coordenar a fase **Delivery** do ForgeProcess:
 - Sinalizar riscos de processo (falta de review, ausência de retrospectiva, etc.).
 - Atualizar `current_phase`, `last_completed_step` e `next_recommended_step`
   em `process/process_execution_state.md` quando há mudanças de fase.
+- Garantir que, antes de propor "aprovar sprint/ciclo" ou "deployed", o gate E2E CLI-first do ciclo atual tenha sido planejado e executado (`./tests/e2e/cycle-XX/run-all.sh`), e que a ausência de `tests/e2e/cycle-XX/` seja tratada como não conformidade explícita, orientando o time a seguir `process/delivery/e2e/E2E_VALIDATION_PROCESS.md` e `process/guides/e2e_test_writing.md`.

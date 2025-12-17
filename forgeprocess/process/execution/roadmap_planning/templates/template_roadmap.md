@@ -134,7 +134,7 @@ Este roadmap é **vivo** e deve ser atualizado:
 
 ## 🔄 Visão de Ciclos
 
-> Para visão macro do produto completo, consulte `specs/roadmap/CYCLE_PLAN.md`
+> Para visão macro do produto completo, consulte `project/specs/roadmap/CYCLE_PLAN.md`
 
 ### Resumo do Planejamento de Ciclos
 
@@ -151,18 +151,18 @@ Este roadmap é **vivo** e deve ser atualizado:
 - **Progresso do produto**: [X]% ([ciclos completos]/[total ciclos])
 - **Sprints restantes estimados**: [N]
 
-> Detalhes completos de alocação ValueTracks → Ciclos em `specs/roadmap/CYCLE_PLAN.md`
+> Detalhes completos de alocação ValueTracks → Ciclos em `project/specs/roadmap/CYCLE_PLAN.md`
 
 ---
 
 ## 📚 Referências
 
 - Visão MDD: `project/docs/visao.md`
-- Features BDD: `specs/bdd/**/*.feature`
-- Backlog detalhado: `specs/roadmap/BACKLOG.md`
-- Estimativas: `specs/roadmap/estimates.yml`
-- Dependências: `specs/roadmap/dependency_graph.md`
-- **Planejamento de Ciclos**: `specs/roadmap/CYCLE_PLAN.md`
+- Features BDD: `project/specs/bdd/**/*.feature`
+- Backlog detalhado: `project/specs/roadmap/BACKLOG.md`
+- Estimativas: `project/specs/roadmap/estimates.yml`
+- Dependências: `project/specs/roadmap/dependency_graph.md`
+- **Planejamento de Ciclos**: `project/specs/roadmap/CYCLE_PLAN.md`
 
 ---
 

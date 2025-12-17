@@ -65,15 +65,15 @@ trabalhando em conjunto com o `roadmap_coach`, stakeholder e tech lead.
 - Documento de referência:
   `process/execution/tdd/TDD_PROCESS.md`
 
-Nesta fase, o symbiota **tdd_coder** (`process/symbiotes/tdd_coder/prompt.md`)
-atua apenas sobre **features BDD e arquivos de teste** (tests/**), preparando e refinando
-os testes que servirão de base para a implementação. A implementação/refatoração de
-`src/**` fica a cargo do **forge_coder** na fase de Delivery (sprints), usando esses
-testes como contrato.
+Nesta fase, o symbiota **forge_coder** (`process/symbiotes/forge_coder/prompt.md`)
+atua como executor TDD focado em **features BDD e arquivos de teste** (`tests/**`) e,
+quando necessário, em ajustes mínimos em `src/**` para validar o comportamento.
+As sessões de Delivery/Sprint continuam sendo o momento principal para consolidação e
+refatoração de código de produção, ainda com o forge_coder como executor principal.
 
 **Pergunta central em Execution/TDD:**
-> Como transformar especificações BDD em uma suíte de testes confiável, que o forge_coder
-> possa usar depois para implementar/refatorar código em Delivery?
+> Como transformar especificações BDD em uma suíte de testes confiável e em código validado,
+> servindo de base para a fase de Delivery contínua?
 
 ---
 

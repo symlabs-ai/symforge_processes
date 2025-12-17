@@ -5,7 +5,7 @@
 
 ---
 
-## Arquivo: `specs/bdd/[prefixo]_[dominio]/[nome].feature`
+## Arquivo: `project/specs/bdd/[prefixo]_[dominio]/[nome].feature`
 
 ```gherkin
 # language: pt

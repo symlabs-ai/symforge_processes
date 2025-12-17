@@ -178,7 +178,7 @@
 - [ ] Action items criados?
 - [ ] Process improvements propostos?
 
-#### ADRs (`specs/adr/ADR-XXX-*.md`)
+#### ADRs (`project/specs/adr/ADR-XXX-*.md`)
 - [ ] Context explica situação?
 - [ ] Decision clara e justificada?
 - [ ] Consequences positivas e negativas documentadas?
@@ -200,7 +200,7 @@ project/sprints/sprint-N/
 ├── review.md            # Sprint review (bill-review)
 └── retrospective.md     # Sprint retrospective (if exists)
 
-specs/adr/
+project/specs/adr/
 └── ADR-XXX-*.md         # Decisions made during sprint
 
 project/sessions/
@@ -224,7 +224,7 @@ git log --oneline sprint-start..sprint-end
 **BDD Compliance**:
 ```bash
 # Check all features have scenarios
-ls specs/bdd/**/*.feature
+ls project/specs/bdd/**/*.feature
 # Check all scenarios have step definitions
 ls tests/bdd/test_*_steps.py
 ```
@@ -534,7 +534,7 @@ process/
 - **Review Process**: `process/delivery/review/REVIEW_PROCESS.md`
 - **TDD Process**: `process/execution/tdd/TDD_PROCESS.md`
 - **BDD Process**: `process/bdd/BDD_PROCESS.md`
-- **ADR Template**: `specs/adr/ADR-TEMPLATE.md`
+- **ADR Template**: `project/specs/adr/ADR-TEMPLATE.md`
 
 ---
 

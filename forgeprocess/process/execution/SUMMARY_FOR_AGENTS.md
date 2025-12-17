@@ -10,8 +10,8 @@ Resumo para LLMs e symbiotas atuando na fase de **Execution**
   - Roadmap Planning (`execution.roadmap.*`)
   - TDD Workflow (`execution.tdd.*`)
 - Saída típica:
-  - `specs/roadmap/ROADMAP.md`
-  - `specs/roadmap/BACKLOG.md`
+  - `project/specs/roadmap/ROADMAP.md`
+  - `project/specs/roadmap/BACKLOG.md`
   - Testes prontos em `tests/**`.
 
 ## 2. Etapas Principais (IDs)
@@ -33,16 +33,16 @@ Resumo para LLMs e symbiotas atuando na fase de **Execution**
 
 ## 3. Artefatos Principais
 
-- `specs/roadmap/ARCHITECTURAL_QUESTIONNAIRE.md`
-- `specs/roadmap/ARCHITECTURAL_DECISIONS_APPROVED.md`
-- `specs/roadmap/TECH_STACK.md`
-- `specs/roadmap/ADR.md` + `specs/roadmap/adr/*.md`
-- `specs/roadmap/HLD.md`, `specs/roadmap/LLD.md`
-- `specs/roadmap/dependency_graph.md`
-- `specs/roadmap/feature_breakdown.md`
-- `specs/roadmap/estimates.yml`
-- `specs/roadmap/ROADMAP.md`
-- `specs/roadmap/BACKLOG.md`
+- `project/specs/roadmap/ARCHITECTURAL_QUESTIONNAIRE.md`
+- `project/specs/roadmap/ARCHITECTURAL_DECISIONS_APPROVED.md`
+- `project/specs/roadmap/TECH_STACK.md`
+- `project/specs/roadmap/ADR.md` + `project/specs/roadmap/adr/*.md`
+- `project/specs/roadmap/HLD.md`, `project/specs/roadmap/LLD.md`
+- `project/specs/roadmap/dependency_graph.md`
+- `project/specs/roadmap/feature_breakdown.md`
+- `project/specs/roadmap/estimates.yml`
+- `project/specs/roadmap/ROADMAP.md`
+- `project/specs/roadmap/BACKLOG.md`
 - `tests/bdd/test_*_steps.py`, `tests/**` relacionados à fase TDD.
 
 ## 4. Symbiotas Relevantes
@@ -51,8 +51,7 @@ Resumo para LLMs e symbiotas atuando na fase de **Execution**
   - Conduz análise arquitetural e decisões de stack (Subetapas 0 e 1 de Roadmap).
 - `execution_coach`  
   - Orquestra Roadmap + TDD, garantindo que fluxo BDD → Roadmap → TDD seja respeitado.
-- `tdd_coder` / `test_writer`  
-  - Implementam e refinam testes a partir de BDD/Backlog.
+- `forge_coder`  
+  - Implementa e refina testes/código a partir de BDD/Backlog nas fases Execution/TDD e Delivery/Sprint.
 - `jorge_forge`  
   - Audita se Execution respeitou o ForgeProcess e limites entre testes e código.
-

@@ -23,7 +23,7 @@ phase_scope:
 allowed_steps: []          # audita qualquer etapa, não executa steps diretamente
 allowed_paths:
   - process/**
-  - specs/**
+  - project/specs/**
   - project/**
 forbidden_paths:
   - src/**
@@ -31,7 +31,7 @@ forbidden_paths:
 
 permissions:
   - read: process/
-  - read: specs/
+  - read: project/specs/
   - read: project/sprints/
   - read: project/sessions/
   - write: project/recommendations.md
@@ -59,25 +59,25 @@ Ser o **guardião do ForgeProcess**:
 ## 📥 Entradas Esperadas (por Fase)
 
 ### Ao final da Fase 3 – MDD
-- `docs/hipotese.md`
-- `docs/visao.md`
-- `docs/sumario_executivo.md`
-- `docs/pitch_deck.md`
-- `docs/resultados_validacao.md`
-- `docs/aprovacao_mvp.md` / `docs/revisao_estrategica.md` / `docs/rejeicao_projeto.md`
+- `project/docs/hipotese.md`
+- `project/docs/visao.md`
+- `project/docs/sumario_executivo.md`
+- `project/docs/pitch_deck.md`
+- `project/docs/resultados_validacao.md`
+- `project/docs/aprovacao_mvp.md` / `project/docs/revisao_estrategica.md` / `project/docs/rejeicao_projeto.md`
 - `process/mdd/**`
 
 ### Ao final da Fase 4 – BDD
-- `specs/bdd/drafts/behavior_mapping.md`
-- `specs/bdd/**/*.feature`
-- `specs/bdd/tracks.yml`
+- `project/specs/bdd/drafts/behavior_mapping.md`
+- `project/specs/bdd/**/*.feature`
+- `project/specs/bdd/tracks.yml`
 - `tests/bdd/`
-- `specs/bdd/HANDOFF_BDD.md`
+- `project/specs/bdd/HANDOFF_BDD.md`
 - `process/bdd/**`
 
 ### Ao final da Fase 5 – Execution (Roadmap Planning + TDD)
-- `specs/roadmap/TECH_STACK.md`, `ADR.md`, `adr/*.md`, `HLD.md`, `LLD.md`
-- `specs/roadmap/ROADMAP.md`, `BACKLOG.md`, `dependency_graph.md`, `estimates.yml`
+- `project/specs/roadmap/TECH_STACK.md`, `ADR.md`, `adr/*.md`, `HLD.md`, `LLD.md`
+- `project/specs/roadmap/ROADMAP.md`, `BACKLOG.md`, `dependency_graph.md`, `estimates.yml`
 - `src/**/*.py`, `tests/**/*.py`
 - `process/execution/**`
 
@@ -88,6 +88,7 @@ Ser o **guardião do ForgeProcess**:
 - `project/sprints/sprint-N/jorge-process-review.md` (revisões anteriores, se houver)
 - `project/sprints/sprint-N/retrospective.md` (se existir)
 - `process/delivery/**`
+ - `tests/e2e/cycle-XX/**` (estrutura de E2E CLI-first do ciclo atual, incluindo evidências em `tests/e2e/cycle-XX/evidence/`)
 
 ### Ao final da Fase 7 – Feedback
 - Artefatos de feedback e métricas (ex.: `project/docs/feedback/cycle-N.md`)
@@ -120,6 +121,7 @@ Jorge verifica, de acordo com a fase em que foi invocado:
   - sessões registradas em `progress.md`;
   - session reviews e sprint review realizadas;
   - retrospectiva capturando aprendizados e ações.
+  - gate E2E CLI-first do ciclo atual implementado e executado (`tests/e2e/cycle-XX/**` + `./tests/e2e/cycle-XX/run-all.sh`), ou ausência explicitamente registrada como não conformidade grave, com orientação para seguir `process/delivery/e2e/E2E_VALIDATION_PROCESS.md` e `process/guides/e2e_test_writing.md`.
 - **ADRs (Architecture Decision Records)**:
   - decisões importantes documentadas;
   - contexto, decisão, consequências e alternativas presentes.

@@ -40,7 +40,7 @@ phases:
             description: "Código implementado"
           - path: "tests/**/*.py"
             description: "Testes automatizados"
-          - path: "specs/bdd/**/*.feature"
+          - path: "project/specs/bdd/**/*.feature"
             description: "Features BDD"
         outputs:
           - path: "project/sprints/sprint-N/review.md"

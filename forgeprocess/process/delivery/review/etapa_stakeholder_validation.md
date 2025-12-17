@@ -32,6 +32,11 @@ Before presenting ANY feature to stakeholder, ALL of the following must be ✅:
 - [ ] Demo has clear success criteria
 - [ ] Known limitations documented in demo output
 
+### 5. E2E CLI-first
+- [ ] Estrutura `tests/e2e/cycle-XX/` criada para o ciclo atual (com diretórios por ValueTrack/SupportTrack)
+- [ ] Scripts E2E criados para os ValueTracks/SupportTracks relevantes do ciclo, seguindo `process/guides/e2e_test_writing.md`
+- [ ] `./tests/e2e/cycle-XX/run-all.sh` executado com sucesso com credenciais reais, gerando evidências em `tests/e2e/cycle-XX/evidence/`
+
 ---
 
 ## 🔴 **FAILURE CASE: F11_MVP + F12A_MVP (2025-11-06)**
@@ -129,7 +134,7 @@ Copy this checklist when preparing stakeholder demo:
 - BDD Process: `process/bdd/BDD_PROCESS.md`
 - Review Process: `process/delivery/review/REVIEW_PROCESS.md`
 - Stakeholder Priority Changes: `process/delivery/sprint/stakeholder_priority_changes.md`
-- ADR-010: `specs/adr/ADR-010-pre-stakeholder-validation-mandate.md`
+- ADR-010: `project/specs/adr/ADR-010-pre-stakeholder-validation-mandate.md`
 
 ---
 

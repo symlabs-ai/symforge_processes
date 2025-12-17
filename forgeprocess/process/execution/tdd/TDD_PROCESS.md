@@ -4,7 +4,7 @@
 
 **Project (exemplo)**: forgeLLMClient (SymClient + Forge SDK)
 **Team**: Agent Coders (Claude Code primary)
-**Symbiota de código (Execution/TDD - TESTES)**: tdd_coder (`process/symbiotes/tdd_coder/prompt.md`)
+**Symbiota de código (Execution/TDD)**: forge_coder (`process/symbiotes/forge_coder/prompt.md`)
 **Last Updated**: 2025-11-05
 **Methodology**: BDD → TDD (Behavior-Driven Development → Test-Driven Development)
 
@@ -13,10 +13,10 @@
 ## 🎯 TDD Philosophy  (ajuste forgeCodeAgent)
 
 > Nota específica para este projeto (`forgeCodeAgent`):
-> Neste macroprocesso, o **tdd_coder** atua APENAS sobre testes (features BDD, step definitions e arquivos em `tests/**`).
-> A implementação e refatoração de código de produção em `src/**` é responsabilidade do **forge_coder** na Fase 6 (Delivery/Sprint).
-> O conteúdo abaixo descreve o ciclo TDD completo em termos conceituais; neste projeto, o tdd_coder aplica esses princípios
-> somente na camada de testes, e o forge_coder os aplica depois na camada de código.
+> Neste macroprocesso, o **forge_coder** é o symbiota único de código/tests.
+> Na fase `execution.tdd.*`, ele foca em features BDD, step definitions e arquivos em `tests/**`, tratando `src/**` como read-only sempre que possível.
+> Nas etapas de Delivery/Sprint, o mesmo symbiota passa a implementar e refatorar código de produção em `src/**`, guiado pelos testes e pelo backlog aprovado.
+> O conteúdo abaixo descreve o ciclo TDD completo em termos conceituais; o forge_coder aplica esses princípios tanto na camada de testes quanto na de código.
 
 ### Red-Green-Refactor Cycle
 
@@ -54,8 +54,8 @@ Fases adicionais descritas neste documento (Refactor, VCR, Commit, etc.) são su
 
 ### Phase 1: Seleção da Tarefa e BDD Scenarios
 
-**Input Principal**: `specs/roadmap/BACKLOG.md` (item de trabalho priorizado)
-**Input Secundário**: Feature file (ex: `specs/bdd/10_forge_core/config.feature`)
+**Input Principal**: `project/specs/roadmap/BACKLOG.md` (item de trabalho priorizado)
+**Input Secundário**: Feature file (ex: `project/specs/bdd/10_forge_core/config.feature`)
 
 **Ações**:
 1. ✅ **Selecionar Tarefa do BACKLOG.md:** Escolher a próxima tarefa priorizada do `BACKLOG.md`. Esta tarefa deve referenciar um ou mais cenários BDD a serem implementados.
@@ -80,7 +80,7 @@ Fases adicionais descritas neste documento (Refactor, VCR, Commit, etc.) são su
 import pytest
 from pytest_bdd import scenario, given, when, then
 
-@scenario('../specs/bdd/10_forge_core/config.feature',
+@scenario('../project/specs/bdd/10_forge_core/config.feature',
           'Precedência de configuração (env > arquivo > defaults)')
 def test_config_precedence():
     pass
@@ -313,7 +313,7 @@ pytest tests/test_config.py -v
 
 ```python
 # tests/test_config.py (adicionar novo teste)
-@scenario('../specs/bdd/10_forge_core/config.feature',
+@scenario('../project/specs/bdd/10_forge_core/config.feature',
           'Erro quando credenciais ausentes')
 def test_config_missing_credentials():
     pass
@@ -405,7 +405,7 @@ import pytest
 from pytest_bdd import scenario, given, when, then
 
 @pytest.mark.vcr()  # Use VCR.py cassette
-@scenario('../specs/bdd/10_forge_core/chat.feature',
+@scenario('../project/specs/bdd/10_forge_core/chat.feature',
           'Enviar mensagem e receber resposta')
 def test_openai_chat():
     pass
@@ -666,9 +666,9 @@ Durante o ciclo TDD, é possível descobrir novas informações que impactam o p
 2.  **Documentação:** Registrar a descoberta, o impacto potencial e a evidência em um ADR provisório ou em uma nota no `progress.md` da sprint.
 3.  **Comunicação:** Alertar o Tech Lead / Product Owner imediatamente.
 4.  **Re-avaliação:** O Tech Lead / Product Owner deve acionar uma revisão do **Roadmap Planning** para:
-    *   Atualizar ADRs (`specs/roadmap/adr/ADR-XXX.md`).
-    *   Revisar e ajustar estimativas (`specs/roadmap/estimates.yml`).
-    *   Re-priorizar tarefas ou quebrar features no `specs/roadmap/BACKLOG.md`.
+    *   Atualizar ADRs (`project/specs/roadmap/adr/ADR-XXX.md`).
+    *   Revisar e ajustar estimativas (`project/specs/roadmap/estimates.yml`).
+    *   Re-priorizar tarefas ou quebrar features no `project/specs/roadmap/BACKLOG.md`.
     *   Convocar uma reunião para discutir e realinhar a arquitetura se necessário (HLD/LLD).
 
 **Importante:** Não prosseguir com a implementação que contraria o planejamento aprovado sem uma revisão e ajuste formal na fase de Roadmap Planning.

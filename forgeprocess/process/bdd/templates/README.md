@@ -9,8 +9,8 @@ Esta pasta contém templates para todas as subetapas do **BDD Process**.
 | Template | Subetapa | Uso | Saída Esperada |
 |----------|----------|-----|----------------|
 | `template_behavior_mapping.md` | Etapa 1 | Mapear ValueTracks → Comportamentos | `process/bdd/docs/behavior_mapping.md` |
-| `template_feature.md` | Etapa 2 | Escrever features Gherkin | `specs/bdd/**/*.feature` |
-| `template_tracks.yml` | Etapa 4 | Criar rastreabilidade | `specs/bdd/tracks.yml` |
+| `template_feature.md` | Etapa 2 | Escrever features Gherkin | `project/specs/bdd/**/*.feature` |
+| `template_tracks.yml` | Etapa 4 | Criar rastreabilidade | `project/specs/bdd/tracks.yml` |
 | `template_step_skeleton.py` | Etapa 5 | Criar step definitions vazias | `tests/bdd/test_*_steps.py` |
 
 ---
@@ -56,11 +56,11 @@ Guia para escrever features Gherkin seguindo o padrão Forge (PT-BR, tags, estru
    - CONTEXTO (pré-condições compartilhadas)
    - CENÁRIO (casos de sucesso e erro)
    - ESQUEMA DO CENÁRIO (casos parametrizados)
-3. Salvar em `specs/bdd/[prefixo]_[dominio]/[nome].feature`
+3. Salvar em `project/specs/bdd/[prefixo]_[dominio]/[nome].feature`
 
 **Estrutura de output:**
 ```
-specs/bdd/
+project/specs/bdd/
 ├── 10_forge_core/
 │   └── chat.feature       ← Criado a partir do template
 ├── 20_symclient_http/
@@ -85,7 +85,7 @@ Estabelecer rastreabilidade entre features BDD ↔ ValueTracks ↔ Métricas.
    - Mapear features que implementam o track
    - Adicionar notes explicando contexto
 3. Validar sintaxe YAML: `yq eval tracks.yml`
-4. Salvar em `specs/bdd/tracks.yml`
+4. Salvar em `project/specs/bdd/tracks.yml`
 
 **Exemplo:**
 ```yaml
@@ -98,7 +98,7 @@ tracks:
       - adocao_dev
       - tempo_integracao
     features:
-      - specs/bdd/10_forge_core/chat.feature
+      - project/specs/bdd/10_forge_core/chat.feature
 ```
 
 ---
@@ -145,9 +145,9 @@ tests/bdd/
 ```mermaid
 flowchart TD
     S1["Subetapa 1: Mapeamento\n→ template_behavior_mapping.md\n→ process/bdd/docs/behavior_mapping.md"]
-    S2["Subetapa 2: Features Gherkin\n→ template_feature.md (guia)\n→ specs/bdd/**/*.feature"]
+    S2["Subetapa 2: Features Gherkin\n→ template_feature.md (guia)\n→ project/specs/bdd/**/*.feature"]
     S3["Subetapa 3: Organização\n→ mover arquivos e pastas"]
-    S4["Subetapa 4: Tracks\n→ template_tracks.yml\n→ specs/bdd/tracks.yml"]
+    S4["Subetapa 4: Tracks\n→ template_tracks.yml\n→ project/specs/bdd/tracks.yml"]
     S5["Subetapa 5: Automação\n→ template_step_skeleton.py\n→ tests/bdd/test_*_steps.py"]
     S6["Subetapa 6: Handoff\n→ criar HANDOFF_BDD.md do projeto"]
 
@@ -192,14 +192,14 @@ Ao criar artefatos a partir dos templates, validar:
 
 ```bash
 # Validar YAML
-yq eval specs/bdd/tracks.yml
+yq eval project/specs/bdd/tracks.yml
 
 # Coletar testes BDD
 pytest --collect-only tests/bdd/
 
 # Validar Gherkin (lint)
 pip install gherkin-lint
-gherkin-lint specs/bdd/**/*.feature
+gherkin-lint project/specs/bdd/**/*.feature
 ```
 
 ---
@@ -208,8 +208,8 @@ gherkin-lint specs/bdd/**/*.feature
 
 - **process/bdd/BDD_PROCESS.md** - Visão geral do processo
 - **process/bdd/etapa_01_*.md** - Detalhamento de cada subetapa
-- **specs/bdd/README.md** - Guia de uso das features
-- **specs/bdd/HANDOFF.md** - Instruções para DEV
+- **project/specs/bdd/README.md** - Guia de uso das features
+- **project/specs/bdd/HANDOFF.md** - Instruções para DEV
 
 ---
 

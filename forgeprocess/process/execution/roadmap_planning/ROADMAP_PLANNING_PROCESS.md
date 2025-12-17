@@ -18,7 +18,7 @@ O **Roadmap Planning** é a fase de planejamento executivo que transforma featur
 ```
 BDD (O QUÊ fazer) → ROADMAP PLANNING (QUANDO/COMO) → TDD (Implementar)
      ↓                         ↓                            ↓
-specs/bdd/*.feature      ROADMAP.md + BACKLOG         forge/* código
+project/specs/bdd/*.feature      ROADMAP.md + BACKLOG         forge/* código
 "Comportamento"          "Planejamento"               "Implementação"
 ```
 
@@ -101,13 +101,13 @@ Para orquestração automática, as subetapas deste processo usam os seguintes I
 
 > **Estrutura alvo em projetos ForgeProcess**
 > Os caminhos abaixo representam a organização **esperada** em um projeto real que adota o ForgeProcess.
-> Este repositório não contém `specs/roadmap` nem outros diretórios de código; eles serão criados
+> Este repositório não contém `project/specs/roadmap` nem outros diretórios de código; eles serão criados
 > por ferramentas como `symforge init -p forgeprocess myproject` ou por scaffolding equivalente.
 
 Ao final do Roadmap Planning, um projeto típico terá:
 
 ```
-specs/
+project/specs/
  └── roadmap/
       ├── TECH_STACK.md           ← Stack completo (libs, versões, ferramentas)
       ├── ADR.md                  ← Índice de Architecture Decision Records
@@ -150,8 +150,8 @@ specs/
 
 Antes de perguntar ao stakeholder, o symbiota **mark_arc** deve:
 1. Analisar `project/docs/visao.md` (problema, solução, métricas)
-2. Revisar `specs/bdd/*.feature` (casos de uso técnicos)
-3. Revisar `specs/bdd/tracks.yml` (ValueTracks e métricas)
+2. Revisar `project/specs/bdd/*.feature` (casos de uso técnicos)
+3. Revisar `project/specs/bdd/tracks.yml` (ValueTracks e métricas)
 4. Identificar constraints técnicos (BDD já definiu comportamentos esperados)
 
 #### 0.2 Esboçar Propostas Técnicas
@@ -167,7 +167,7 @@ Com base na análise, o symbiota **mark_arc** esboça propostas para:
 
 #### 0.3 Criar Questionário de Validação
 
-**Criar**: `specs/roadmap/ARCHITECTURAL_QUESTIONNAIRE.md`
+**Criar**: `project/specs/roadmap/ARCHITECTURAL_QUESTIONNAIRE.md`
 
 O questionário deve conter:
 - **Proposta principal** (recomendação do symbiota mark_arc)
@@ -230,7 +230,7 @@ Aguardar respostas no questionário. Stakeholder pode:
 
 #### 0.6 Consolidar Decisões Aprovadas
 
-Após aprovação, criar `specs/roadmap/ARCHITECTURAL_DECISIONS_APPROVED.md` com:
+Após aprovação, criar `project/specs/roadmap/ARCHITECTURAL_DECISIONS_APPROVED.md` com:
 - Decisões aprovadas pelo stakeholder
 - Data de aprovação
 - Nome do stakeholder aprovador
@@ -266,14 +266,14 @@ Após aprovação, criar `specs/roadmap/ARCHITECTURAL_DECISIONS_APPROVED.md` com
 - Linting? (ruff, pylint, flake8?)
 - Formatação? (black, ruff format?)
 
-**Criar**: `specs/roadmap/TECH_STACK.md`
+**Criar**: `project/specs/roadmap/TECH_STACK.md`
 
 > **Recomendação específica para projetos ForgeBase**
 >
 > Para runtimes e módulos que se apoiam no ForgeBase (como o forgeCodeAgent),
 > esta subetapa também deve registrar a versão alvo do pacote `forgebase` e
 > garantir que o núcleo esteja instalado e importável no ambiente de
-> desenvolvimento (ver `docs/guides/forgebase_guides/forgebase_install.md`).
+> desenvolvimento (ver `docs/integrations/forgebase_guides/forgebase_install.md`).
 > Isso evita que a fase de TDD seja iniciada sem as bases `EntityBase`,
 > `UseCaseBase`, `PortBase` e `AdapterBase` disponíveis.
 
@@ -283,7 +283,7 @@ Após aprovação, criar `specs/roadmap/ARCHITECTURAL_DECISIONS_APPROVED.md` com
 > - virtualenv do projeto com dependências de desenvolvimento (pytest, pytest-bdd, pre-commit, ruff);
 > - hooks de pre-commit conforme `temp/setup-git.txt` (copiando `pre-commit-config.yaml`, `ruff.toml`, scripts de instalação);
 > - execução de um `pre-commit run --all-files` inicial para alinhar o baseline.
-> Assim, quando o `tdd_coder` entrar em execução, o ambiente de testes e os guard-rails de qualidade já estarão prontos.
+> Assim, quando o `forge_coder` entrar em execução na fase de TDD, o ambiente de testes e os guard-rails de qualidade já estarão prontos.
 
 **Exemplo**:
 ```markdown
@@ -340,7 +340,7 @@ forge/
 ├── tests/
 │   ├── bdd/                # Tests pytest-bdd
 │   └── unit/               # Unit tests
-└── specs/
+└── project/specs/
     └── bdd/                # Features Gherkin
 ```
 
@@ -405,7 +405,7 @@ Como saberemos se foi a decisão correta?
 - [Documento técnico]
 ```
 
-**Criar**: `specs/roadmap/ADR.md` (índice) + `specs/roadmap/adr/ADR-001.md`, `ADR-002.md`, etc.
+**Criar**: `project/specs/roadmap/ADR.md` (índice) + `project/specs/roadmap/adr/ADR-001.md`, `ADR-002.md`, etc.
 
 ---
 
@@ -535,7 +535,7 @@ Decisões arquiteturais devem ser **visualizadas** para facilitar compreensão e
 
 **Objetivo**: Mostrar componentes principais, integrações externas, fluxos de dados de alto nível.
 
-**Criar**: `specs/roadmap/HLD.md`
+**Criar**: `project/specs/roadmap/HLD.md`
 
 **Exemplo para Forge**:
 
@@ -661,7 +661,7 @@ sequenceDiagram
 
 **Objetivo**: Mostrar estrutura interna de módulos, classes, interfaces, padrões de design.
 
-**Criar**: `specs/roadmap/LLD.md`
+**Criar**: `project/specs/roadmap/LLD.md`
 
 **Exemplo para Forge**:
 
@@ -1045,11 +1045,11 @@ async def forge_error_handler(request, exc: ForgeError):
 
 ### Saídas da Subetapa 1
 
-- ✅ `specs/roadmap/TECH_STACK.md` — Stack completo documentado
-- ✅ `specs/roadmap/ADR.md` — Índice de ADRs
-- ✅ `specs/roadmap/adr/ADR-001.md` até `ADR-00N.md` — Decisões individuais
-- ✅ `specs/roadmap/HLD.md` — High Level Design (arquitetura macro) ⭐ **NOVO**
-- ✅ `specs/roadmap/LLD.md` — Low Level Design (classes, interfaces, fluxos) ⭐ **NOVO**
+- ✅ `project/specs/roadmap/TECH_STACK.md` — Stack completo documentado
+- ✅ `project/specs/roadmap/ADR.md` — Índice de ADRs
+- ✅ `project/specs/roadmap/adr/ADR-001.md` até `ADR-00N.md` — Decisões individuais
+- ✅ `project/specs/roadmap/HLD.md` — High Level Design (arquitetura macro) ⭐ **NOVO**
+- ✅ `project/specs/roadmap/LLD.md` — Low Level Design (classes, interfaces, fluxos) ⭐ **NOVO**
 - ✅ Consenso técnico entre tech lead e time
 
 **Próximo passo**: Subetapa 2 (Análise de Dependências) já sabendo COMO vamos implementar.
@@ -1063,7 +1063,7 @@ Identificar quais features dependem de outras para definir ordem técnica obriga
 
 ### Processo
 
-1. **Listar todas as features** de `specs/bdd/tracks.yml`
+1. **Listar todas as features** de `project/specs/bdd/tracks.yml`
 2. **Identificar dependências técnicas**:
    - `config.feature` é pré-requisito de TODAS (configuração base)
    - `chat.feature` é pré-requisito de `sessao.feature` (contexto depende de chat)
@@ -1074,7 +1074,7 @@ Identificar quais features dependem de outras para definir ordem técnica obriga
 3. **Criar grafo de dependências** (Mermaid)
 
 ### Saída
-`specs/roadmap/dependency_graph.md`
+`project/specs/roadmap/dependency_graph.md`
 
 **Exemplo**:
 ```mermaid
@@ -1106,7 +1106,7 @@ Dividir features grandes (> 3 cenários ou > 5 dias de esforço) em tarefas impl
 
 ### Processo
 
-1. **Revisar cada feature** de `specs/bdd/`
+1. **Revisar cada feature** de `project/specs/bdd/`
 2. **Identificar features complexas** que precisam quebra:
    - `tool_calling_fallback.feature` → pode ser quebrado em "tool calling nativo" + "fallback emulado"
    - `marketplace.feature` → pode ser quebrado em "conexão MCP" + "invocar serviços"
@@ -1126,7 +1126,7 @@ Dividir features grandes (> 3 cenários ou > 5 dias de esforço) em tarefas impl
 ```
 
 ### Saída
-Seção "Feature Breakdown" em `specs/roadmap/BACKLOG.md`
+Seção "Feature Breakdown" em `project/specs/roadmap/BACKLOG.md`
 
 ---
 
@@ -1195,7 +1195,7 @@ Estimar esforço de cada item e ordenar por:
    - **Sprint 4 (P3)**: Ecossistema (MCP + Broker)
 
 ### Saída
-`specs/roadmap/estimates.yml`
+`project/specs/roadmap/estimates.yml`
 
 **Exemplo (Tres Dimensoes)**:
 ```yaml
@@ -1278,7 +1278,7 @@ Gerar documentos executáveis que guiam a implementação TDD.
 
 ### Saída
 
-#### `specs/roadmap/ROADMAP.md`
+#### `project/specs/roadmap/ROADMAP.md`
 ```markdown
 # TDD Roadmap — forgeLLMClient
 
@@ -1306,7 +1306,7 @@ Gerar documentos executáveis que guiam a implementação TDD.
 | Fallback de tool calling difícil | ALTA | MÉDIO | Spike técnico na semana 2 |
 ```
 
-#### `specs/roadmap/BACKLOG.md`
+#### `project/specs/roadmap/BACKLOG.md`
 ```markdown
 # Backlog de Implementação — forgeLLMClient
 
@@ -1318,7 +1318,7 @@ Gerar documentos executáveis que guiam a implementação TDD.
 **Track**: `value_forge_symclient_baseline`
 **Esforço**: S (1-2 dias)
 **Responsável**: @dev-team
-**Feature BDD**: `specs/bdd/10_forge_core/config.feature`
+**Feature BDD**: `project/specs/bdd/10_forge_core/config.feature`
 
 **Tarefas**:
 - [ ] [TASK-001.1] Implementar `forge/config.py` com precedência env > file > defaults
@@ -1339,7 +1339,7 @@ Gerar documentos executáveis que guiam a implementação TDD.
 **Esforço**: M (3-5 dias)
 **Dependências**: FEATURE-001
 **Responsável**: @dev-team
-**Feature BDD**: `specs/bdd/10_forge_core/chat.feature`
+**Feature BDD**: `project/specs/bdd/10_forge_core/chat.feature`
 
 **Tarefas**:
 - [ ] [TASK-002.1] Implementar `forge/chat.py` com método `chat()`
@@ -1431,7 +1431,7 @@ Antes de entregar o Roadmap Planning para TDD, validar:
 
 #### 6.1 Listar todos os ValueTracks do MDD
 
-Revisar `docs/visao.md` e `specs/bdd/tracks.yml` para identificar:
+Revisar `project/docs/visao.md` e `project/specs/bdd/tracks.yml` para identificar:
 - Todos os **ValueTracks** (fluxos que entregam valor direto ao usuário)
 - Todos os **SupportTracks** (infraestrutura que sustenta o valor)
 - KPIs e métricas de cada track
@@ -1456,7 +1456,7 @@ Para cada ciclo, consolidar:
 
 #### 6.4 Criar CYCLE_PLAN.md
 
-**Criar**: `specs/roadmap/CYCLE_PLAN.md`
+**Criar**: `project/specs/roadmap/CYCLE_PLAN.md`
 
 **Template**: `process/execution/roadmap_planning/templates/template_cycle_plan.md`
 
@@ -1504,7 +1504,7 @@ cycle_planning:
 
 ### Saídas da Subetapa 6
 
-- ✅ `specs/roadmap/CYCLE_PLAN.md` — Mapeamento completo ValueTracks → Ciclos
+- ✅ `project/specs/roadmap/CYCLE_PLAN.md` — Mapeamento completo ValueTracks → Ciclos
 - ✅ `process/state/forgeprocess_state.yml` atualizado com `cycle_planning`
 - ✅ Stakeholder aprovou visão macro do produto
 
@@ -1543,8 +1543,8 @@ Ao concluir Roadmap Planning:
 
 **Referências**:
 - Processo TDD: `process/execution/tdd/TDD_PROCESS.md` (a criar)
-- Handoff BDD: `specs/bdd/HANDOFF.md`
-- Features BDD: `specs/bdd/**/*.feature`
+- Handoff BDD: `project/specs/bdd/HANDOFF.md`
+- Features BDD: `project/specs/bdd/**/*.feature`
 
 ---
 

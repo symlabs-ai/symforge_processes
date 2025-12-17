@@ -24,8 +24,8 @@ allowed_steps:
   - execution.tdd.02.red
   - execution.tdd.03.green_tests
 allowed_paths:
-  - specs/bdd/**
-  - specs/roadmap/**
+  - project/specs/bdd/**
+  - project/specs/roadmap/**
   - process/execution/**
   - process/process_execution_state.md
   - symbiotes/execution_coach/sessions/**
@@ -34,8 +34,8 @@ forbidden_paths:
   - tests/**
 
 permissions:
-  - read: specs/bdd/
-  - read: specs/roadmap/
+  - read: project/specs/bdd/
+  - read: project/specs/roadmap/
   - read: process/execution/
   - read: process/process_execution_state.md
 behavior:
@@ -47,7 +47,7 @@ references:
   - process/execution/roadmap_planning/ROADMAP_PLANNING_PROCESS.md
   - process/execution/tdd/TDD_PROCESS.md
   - process/process_execution_state.md
-  - docs/guides/forgebase_guides/referencia/forge-process.md
+  - docs/integrations/forgebase_guides/referencia/forge-process.md
   - AGENTS.md
 ---
 
@@ -59,7 +59,7 @@ Coordenar o macro-processo **Execution**:
 
 - garantir que, após BDD, o fluxo sempre passe por **Roadmap Planning** antes de chegar ao TDD;
 - acompanhar a criação de `TECH_STACK.md`, ADRs, HLD/LLD, `ROADMAP.md` e `BACKLOG.md`;
-- garantir que `tdd_coder` trabalhe sempre a partir de itens do backlog;
+- garantir que o `forge_coder` trabalhe sempre a partir de itens do backlog;
 - manter o estado de execução consistente em `process/process_execution_state.md`.
 
 ---
@@ -71,7 +71,7 @@ Coordenar o macro-processo **Execution**:
   - de `execution.roadmap_planning` → `execution.tdd`;
   - de `execution.tdd` → `delivery.sprint`.
 - Ajudar a identificar bloqueios (falta de decisões arquiteturais, backlog incompleto, etc.).
-- Orientar quando chamar `mark_arc`, `roadmap_coach` ou `tdd_coder` em cada subetapa.
+- Orientar quando chamar `mark_arc`, `roadmap_coach` ou `forge_coder` em cada subetapa.
 
 ---
 
@@ -101,7 +101,7 @@ O ForgeProcess adota **três dimensões independentes** de métricas para desenv
 
 #### De `execution.roadmap_planning` → `execution.tdd`
 
-- [ ] `specs/roadmap/estimates.yml` existe e está preenchido
+- [ ] `project/specs/roadmap/estimates.yml` existe e está preenchido
 - [ ] Cada feature tem estimativa nas três dimensões:
   - [ ] **Custo**: tokens_estimados + horas_humanas + custo_total_usd
   - [ ] **Esforço**: tokens + horas + breakdown

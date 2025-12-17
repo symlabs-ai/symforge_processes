@@ -11,7 +11,7 @@ O **BDD Process** é a ponte entre **mercado** e **código**. Ele transforma o a
 ```
 MDD (Valor Validado) → BDD (Comportamento Especificado) → TDD (Código Testado)
         ↓                          ↓                              ↓
-   visao.md                specs/bdd/*.feature              src/forge/*
+   visao.md                project/specs/bdd/*.feature      src/forge/*
    "PORQUÊ"                "O QUÊ fazer"                    "COMO implementar"
    (project/docs/)         (Gherkin PT-BR)                  (Python)
 ```
@@ -47,7 +47,7 @@ MDD (Valor Validado) → BDD (Comportamento Especificado) → TDD (Código Testa
                  ▼
 ┌─────────────────────────────────────────────────────────┐
 │ 3. Organização e Tagging                               │
-│    "Estruturar specs/bdd/ com tags de execução"        │
+│    "Estruturar project/specs/bdd/ com tags de execução"│
 └────────────────┬────────────────────────────────────────┘
                  │ Rastreabilidade
                  ▼
@@ -86,13 +86,13 @@ Cada subetapa acima possui um **ID estável**, usado em estado, manifests e orqu
 
 > **Estrutura alvo em projetos ForgeProcess**
 > Os caminhos abaixo descrevem **como um projeto que adota o ForgeProcess deve ser organizado**.
-> Este repositório não contém essas pastas finais (`specs/`, `tests/` etc.); elas serão criadas em um
+> Este repositório não contém essas pastas finais (`project/specs/`, `tests/` etc.); elas serão criadas em um
 > projeto real (por exemplo, via `symforge init -p forgeprocess myproject`).
 
 Ao final do BDD Process, um projeto típico terá:
 
 ```
-specs/
+project/specs/
  └── bdd/
       ├── 00_glossario.md                    ← Linguagem ubíqua
       ├── README.md                          ← Guia de uso
@@ -142,11 +142,11 @@ tests/
 ### 🔹 Subetapa 1: Mapeamento de Comportamentos
 
 **📥 Entrada:**
-- `docs/visao.md` (A visão do produto)
-- `docs/aprovacao_mvp.md` (Aprovação formal do MVP e aprendizados)
+- `project/docs/visao.md` (A visão do produto)
+- `project/docs/aprovacao_mvp.md` (Aprovação formal do MVP e aprendizados)
 
 **📤 Saída:**
-- `specs/bdd/drafts/behavior_mapping.md` (rascunho)
+- `project/specs/bdd/drafts/behavior_mapping.md` (rascunho)
 
 **🎯 Objetivo:**
 Derivar comportamentos concretos dos ValueTracks definidos no MDD.
@@ -173,10 +173,10 @@ Derivar comportamentos concretos dos ValueTracks definidos no MDD.
 ### 🔹 Subetapa 2: Escrita de Features Gherkin
 
 **📥 Entrada:**
-- `process/bdd/docs/behavior_mapping.md`
+- `project/specs/bdd/drafts/behavior_mapping.md`
 
 **📤 Saída:**
-- `specs/bdd/**/*.feature` (arquivos Gherkin)
+- `project/specs/bdd/**/*.feature` (arquivos Gherkin)
 
 **🎯 Objetivo:**
 Escrever especificações em linguagem natural (Gherkin PT-BR) que todos entendam.
@@ -218,12 +218,12 @@ FUNCIONALIDADE: Título descritivo
 ### 🔹 Subetapa 3: Organização e Tagging
 
 **📥 Entrada:**
-- `specs/bdd/**/*.feature` (recém-criadas)
+- `project/specs/bdd/**/*.feature` (recém-criadas)
 
 **📤 Saída:**
 - Features organizadas por pasta
 - Tags aplicadas consistentemente
-- `specs/bdd/README.md` atualizado
+- `project/specs/bdd/README.md` atualizado
 
 **🎯 Objetivo:**
 Estruturar features para facilitar navegação, execução seletiva e CI.
@@ -273,11 +273,11 @@ FUNCIONALIDADE: Preservar histórico por sessão
 ### 🔹 Subetapa 4: Criação de tracks.yml
 
 **📥 Entrada:**
-- `specs/bdd/**/*.feature` (organizadas)
+- `project/specs/bdd/**/*.feature` (organizadas)
 - `project/docs/visao.md` (ValueTracks originais)
 
 **📤 Saída:**
-- `specs/bdd/tracks.yml`
+- `project/specs/bdd/tracks.yml`
 
 **🎯 Objetivo:**
 Estabelecer rastreabilidade entre:
@@ -297,8 +297,8 @@ tracks:
       - adocao_dev           # nº de projetos usando
       - tempo_integracao     # tempo para primeiro chat funcionar
     features:
-      - specs/bdd/10_forge_core/chat.feature
-      - specs/bdd/10_forge_core/config.feature
+      - project/specs/bdd/10_forge_core/chat.feature
+      - project/specs/bdd/10_forge_core/config.feature
 
   - id: support_context_session
     type: SUPPORT
@@ -308,7 +308,7 @@ tracks:
       - confiabilidade       # % de sessões preservadas corretamente
       - consistencia         # ausência de vazamento entre sessões
     features:
-      - specs/bdd/10_forge_core/sessao.feature
+      - project/specs/bdd/10_forge_core/sessao.feature
 ```
 
 **Rastreabilidade:**
@@ -323,7 +323,7 @@ tracks:
 ### 🔹 Subetapa 5: Skeleton de Automação
 
 **📥 Entrada:**
-- `specs/bdd/**/*.feature` (finalizadas)
+- `project/specs/bdd/**/*.feature` (finalizadas)
 
 **📤 Saída:**
 - `tests/bdd/test_*_steps.py` (step definitions vazias)
@@ -344,7 +344,7 @@ from pytest_bdd import scenarios, given, when, then, parsers
 pytestmark = pytest.mark.skip("BDD: Forge chat pendente de implementação")
 
 # Vincular feature
-scenarios("../../specs/bdd/10_forge_core/chat.feature")
+scenarios("../../project/specs/bdd/10_forge_core/chat.feature")
 
 # Step definitions (vazias por enquanto)
 @given('que o Forge está configurado com o provedor "echo"', target_fixture="forge_client")
@@ -407,7 +407,7 @@ markers =
 - Todos os artefatos das subetapas anteriores (BDD completo)
 
 **📤 Saída:**
-- `specs/bdd/HANDOFF_BDD.md` (documento de handoff para o planejamento)
+- `project/specs/bdd/HANDOFF_BDD.md` (documento de handoff para o planejamento)
 
 **🎯 Objetivo:**
 Empacotar e documentar formalmente a especificação de comportamento completa, entregando-a como entrada para a fase de **Roadmap Planning**.
@@ -432,16 +432,16 @@ Empacotar e documentar formalmente a especificação de comportamento completa, 
 ┌─────────────────────────────────────────────────────────┐
 │ MDD: Market Driven Development                          │
 ├─────────────────────────────────────────────────────────┤
-│ Saída: docs/visao.md                                    │
-│        docs/aprovacao_mvp.md                            │
+│ Saída: project/docs/visao.md                            │
+│        project/docs/aprovacao_mvp.md                    │
 └────────────────┬────────────────────────────────────────┘
                  │
                  ▼ Handoff MDD → BDD
 ┌─────────────────────────────────────────────────────────┐
 │ BDD: Behavior Driven Development                        │
 ├─────────────────────────────────────────────────────────┤
-│ Saída: specs/bdd/*.feature                              │
-│        specs/bdd/tracks.yml                             │
+│ Saída: project/specs/bdd/*.feature                      │
+│        project/specs/bdd/tracks.yml                     │
 │        tests/bdd/test_*_steps.py (skeleton)             │
 └────────────────┬────────────────────────────────────────┘
                  │
@@ -492,8 +492,8 @@ Empacotar e documentar formalmente a especificação de comportamento completa, 
 - **process/mdd/MDD_process.md** - Processo que gera entrada para BDD
 - **process/PROCESS.md** - Visão geral do ciclo completo
 - **process/execution/roadmap_planning/ROADMAP_PLANNING_PROCESS.md** - Próxima fase do processo
-- **specs/bdd/README.md** - Guia de uso das features
-- **specs/bdd/HANDOFF_BDD.md** - Documento de Handoff para Roadmap Planning
+- **project/specs/bdd/README.md** - Guia de uso das features
+- **project/specs/bdd/HANDOFF_BDD.md** - Documento de Handoff para Roadmap Planning
 
 ---
 

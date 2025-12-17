@@ -135,7 +135,7 @@ Stakeholder: "Option C (MVP Simplification).
 
 **Agent creates ADR-XXX**:
 
-Use template from `specs/adr/ADR-009-template.md`:
+Use template from `project/specs/adr/ADR-009-template.md`:
 
 ```markdown
 # ADR-XXX: [Title]
@@ -192,7 +192,7 @@ Use template from `specs/adr/ADR-009-template.md`:
 - Related handoffs
 ```
 
-**Save to**: `specs/adr/ADR-XXX-<kebab-case-title>.md`
+**Save to**: `project/specs/adr/ADR-XXX-<kebab-case-title>.md`
 
 ---
 
@@ -365,7 +365,7 @@ Agent: "Adding fallback logic would increase F11_MVP from 5pts to 13pts.
 
 ### ADR Template
 
-See: `specs/adr/ADR-009-prioritize-streaming-toolcalling-mvp.md` (reference example)
+See: `project/specs/adr/ADR-009-prioritize-streaming-toolcalling-mvp.md` (reference example)
 
 ### Impact Analysis Template
 

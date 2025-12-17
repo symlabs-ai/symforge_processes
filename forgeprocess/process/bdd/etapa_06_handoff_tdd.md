@@ -17,10 +17,10 @@ Esta é a **ponte** entre especificação (BDD) e implementação (TDD).
 | Tipo | Artefato | Descrição |
 |------|----------|-----------|
 | **Entrada** | Todas as saídas das etapas 1-5 | BDD completo |
-| **Saída** | `specs/bdd/HANDOFF.md` | Documento de handoff |
-| **Saída** | `specs/bdd/README.md` | Guia de uso atualizado |
-| **Saída** | `specs/bdd/pull_request_template.md` | Template de PR |
-| **Saída** | `specs/bdd/QUICKSTART.md` | Guia de início rápido (opcional) |
+| **Saída** | `project/specs/bdd/HANDOFF.md` | Documento de handoff |
+| **Saída** | `project/specs/bdd/README.md` | Guia de uso atualizado |
+| **Saída** | `project/specs/bdd/pull_request_template.md` | Template de PR |
+| **Saída** | `project/specs/bdd/QUICKSTART.md` | Guia de início rápido (opcional) |
 
 ---
 
@@ -51,7 +51,7 @@ Esta é a **ponte** entre especificação (BDD) e implementação (TDD).
 ### Estrutura de Pastas
 
 ```
-specs/bdd/
+project/specs/bdd/
 ├── 10_forge_core/         → 4 features (chat, sessao, config, streaming)
 ├── 20_symclient_http/     → 2 features (chat_http, errors)
 ├── 21_symclient_stdio/    → 2 features (ping_chat, errors)
@@ -261,14 +261,14 @@ pytest -m ci_fast --html=report.html --self-contained-html
 
 ### Template de PR
 
-Use `specs/bdd/pull_request_template.md`:
+Use `project/specs/bdd/pull_request_template.md`:
 
 ```markdown
 ## Track e Feature
 
 - **Track ID**: `value_forge_symclient_baseline`
 - **Track Type**: VALUE
-- **Feature**: `specs/bdd/10_forge_core/chat.feature`
+- **Feature**: `project/specs/bdd/10_forge_core/chat.feature`
 - **Cenário(s) implementado(s)**:
   - [ ] "Enviar mensagem simples e receber resposta"
   - [ ] "Erro ao usar provedor não configurado"
@@ -342,7 +342,7 @@ Ambos os cenários devem existir e ser mantidos.
 - **PO/Product**: [Nome/Email]
 - **Tech Lead**: [Nome/Email]
 - **Canal Slack**: #forge-dev
-- **Documentação**: `specs/bdd/README.md`
+- **Documentação**: `project/specs/bdd/README.md`
 - **Issues**: [Link do projeto]
 
 ---
@@ -367,11 +367,11 @@ Ambos os cenários devem existir e ser mantidos.
 
 ### Artefatos Obrigatórios
 
-- [ ] `specs/bdd/HANDOFF.md` completo
-- [ ] `specs/bdd/README.md` atualizado com instruções de execução
-- [ ] `specs/bdd/pull_request_template.md` criado
-- [ ] `specs/bdd/tracks.yml` validado
-- [ ] `specs/bdd/00_glossario.md` finalizado
+- [ ] `project/specs/bdd/HANDOFF.md` completo
+- [ ] `project/specs/bdd/README.md` atualizado com instruções de execução
+- [ ] `project/specs/bdd/pull_request_template.md` criado
+- [ ] `project/specs/bdd/tracks.yml` validado
+- [ ] `project/specs/bdd/00_glossario.md` finalizado
 - [ ] Todas as features com tags corretas
 - [ ] Step definitions skeleton criadas
 - [ ] `pytest.ini` e `requirements-dev.txt` configurados
@@ -380,7 +380,7 @@ Ambos os cenários devem existir e ser mantidos.
 
 - [ ] `pytest --collect-only tests/bdd/` → sem erros
 - [ ] `pytest tests/bdd/ -v` → todos skipped (ainda não implementados)
-- [ ] `yq eval specs/bdd/tracks.yml` → YAML válido
+- [ ] `yq eval project/specs/bdd/tracks.yml` → YAML válido
 - [ ] Estrutura de pastas segue convenção (prefixos numéricos)
 
 ### Validações de Negócio

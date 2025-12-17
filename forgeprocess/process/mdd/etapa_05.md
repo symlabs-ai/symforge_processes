@@ -18,7 +18,7 @@ A decisão, portanto, **pertence ao stakeholder**: continuar, revisar ou encerra
 | Tipo         | Artefato                                                                                                             | Descrição                                                                     |
 | ------------ | -------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------- |
 | **Entradas** | `project/output/sites/site_01–03/`, `project/data/validacao/`                                                        | Dados de interação e engajamento coletados das páginas de validação (A/B/C).  |
-| **Saídas**   | `docs/resultados_validacao.md`, `docs/revisao_estrategica.md`, `docs/aprovacao_mvp.md` ou `docs/rejeicao_projeto.md` | Relatórios de análise, interpretação coletiva e decisão final do stakeholder. |
+| **Saídas**   | `project/docs/resultados_validacao.md`, `project/docs/revisao_estrategica.md`, `project/docs/aprovacao_mvp.md` ou `project/docs/rejeicao_projeto.md` | Relatórios de análise, interpretação coletiva e decisão final do stakeholder. |
 
 📁 **Templates:**
 

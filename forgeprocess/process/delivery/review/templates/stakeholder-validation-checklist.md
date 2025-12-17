@@ -47,7 +47,7 @@ bash examples/sprint[N]/run_demo_[feature].sh
 ### 2. BDD Tests ✅
 
 - [ ] **BDD tests exist**: `tests/bdd/test_[feature]_steps.py`
-- [ ] **Feature file exists**: `specs/bdd/features/[feature].feature`
+- [ ] **Feature file exists**: `project/specs/bdd/features/[feature].feature`
 - [ ] **All tests pass**: OR explicitly skip with reason
 - [ ] **Integration tests run**: With real API (if applicable)
 - [ ] **No unexpected failures**: All failures documented

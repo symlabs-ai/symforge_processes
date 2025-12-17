@@ -23,7 +23,7 @@
 - Sempre seguir a ordem macro (não inverter):
   - Intenção de valor → **MDD** → **BDD** → **Execution (Roadmap → TDD)** → **Delivery (Sprint + Review)** → **Feedback**.
 - Arquitetura e backlog **NUNCA** são definidos dentro do TDD:
-  - TDD implementa o que já está definido em `specs/roadmap/` (principalmente `BACKLOG.md`).
+  - TDD implementa o que já está definido em `project/specs/roadmap/` (principalmente `BACKLOG.md`).
   - Roadmap Planning é o lugar para validar arquitetura, dependências e priorização.
 - Persistência:
   - Artefatos em Markdown/YAML, versionados em Git.
@@ -36,7 +36,7 @@
   - `mdd_coach`, `mdd_publisher`
   - `bdd_coach`
   - `roadmap_coach`, `execution_coach`, `mark_arc`
-  - `tdd_coder`, `forge_coder`
+  - `forge_coder`
   - `sprint_coach`, `delivery_coach`
   - `bill_review`, `jorge_the_forge`
 
@@ -63,7 +63,7 @@
 ## 1.1 Planejamento de Ciclos (visão macro do produto)
 
 > Preenchido durante Roadmap Planning (`execution.roadmap.06.cycle_planning`).
-> Fonte de verdade: `specs/roadmap/CYCLE_PLAN.md` e `forgeprocess_state.yml`.
+> Fonte de verdade: `project/specs/roadmap/CYCLE_PLAN.md` e `forgeprocess_state.yml`.
 
 ### Visão do Produto Completo
 
@@ -129,17 +129,17 @@
 
 > Esta seção responde: "Quanto falta para terminar o produto?"
 > Atualizar ao final de cada ciclo ou quando CYCLE_PLAN.md for revisado.
-> Referência: `docs/users/literature/forgeprocess-metricas-hibridas.md`
+> Referência: `process/guides/forgeprocess-metricas-hibridas.md`
 
 ---
 
 ## 2. Bootstrap do projeto
 
 - [ ] Verificar estrutura mínima:
-  - [ ] Diretórios: `process/`, `specs/`, `project/`, `src/`, `tests/`
+  - [ ] Diretórios: `process/`, `project/`, `project/specs/`, `src/`, `tests/`
   - [ ] Arquivos: `process/PROCESS.yml`, `process/README.md`
 - [ ] Criar hipótese inicial (se não existir):
-  - [ ] `docs/hipotese.md` (template: `process/mdd/templates/template_hipotese.md`)
+  - [ ] `project/docs/hipotese.md` (template: `process/templates/template_hipotese.md`)
 - [ ] Atualizar estado (YAML + este arquivo):
   - [ ] `current_phase = mdd`
   - [ ] `last_completed_step = mdd.01.concepcao_visao`
@@ -157,9 +157,9 @@ Referência: `process/mdd/PROCESS.yml`
 ### 3.1 Etapa 01 — Concepção da Visão
 
 - Entradas:
-  - [ ] `docs/hipotese.md`
+  - [ ] `project/docs/hipotese.md`
 - Saídas (criar/preencher):
-  - [ ] `docs/visao.md` (template: `process/mdd/templates/template_visao.md`)
+  - [ ] `project/docs/visao.md` (template: `process/templates/template_visao.md`)
 - Critério de conclusão:
   - [ ] Visão aprovada pelo stakeholder (decisão `validar_visao = approved`)
   - Atualizar estado:
@@ -169,10 +169,10 @@ Referência: `process/mdd/PROCESS.yml`
 ### 3.2 Etapa 02 — Síntese Executiva
 
 - Entradas:
-  - [ ] `docs/visao.md`
+  - [ ] `project/docs/visao.md`
 - Saídas:
-  - [ ] `docs/sumario_executivo.md` (template: `process/mdd/templates/template_sumario_executivo.md`)
-  - [ ] (opcional) `output/docs/sumario_executivo.pdf` — gerado por `mdd_publisher`
+  - [ ] `project/docs/sumario_executivo.md` (template: `process/templates/template_sumario_executivo.md`)
+  - [ ] (opcional) `project/output/docs/sumario_executivo.pdf` — gerado por `mdd_publisher`
 - Critério de conclusão:
   - [ ] Síntese aprovada (`validar_sintese = approved`)
   - Atualizar estado:
@@ -182,11 +182,11 @@ Referência: `process/mdd/PROCESS.yml`
 ### 3.3 Etapa 03 — Pitch de Valor
 
 - Entradas:
-  - [ ] `docs/visao.md`
-  - [ ] `docs/sumario_executivo.md`
+  - [ ] `project/docs/visao.md`
+  - [ ] `project/docs/sumario_executivo.md`
 - Saídas:
-  - [ ] `docs/pitch_deck.md` (template: `process/mdd/templates/template_pitch_deck.md`)
-  - [ ] (opcional) `output/docs/pitch_deck.pptx` — gerado por `mdd_publisher`
+  - [ ] `project/docs/pitch_deck.md` (template: `process/templates/template_pitch_deck.md`)
+  - [ ] (opcional) `project/output/docs/pitch_deck.pptx` — gerado por `mdd_publisher`
 - Critério de conclusão:
   - [ ] Pitch aprovado (`validar_pitch = approved`)
   - Atualizar estado:
@@ -196,16 +196,16 @@ Referência: `process/mdd/PROCESS.yml`
 ### 3.4 Etapa 04 — Validação Pública Inicial
 
 - Entradas:
-  - [ ] `docs/visao.md`
-  - [ ] `docs/sumario_executivo.md`
-  - [ ] `docs/pitch_deck.md`
+  - [ ] `project/docs/visao.md`
+  - [ ] `project/docs/sumario_executivo.md`
+  - [ ] `project/docs/pitch_deck.md`
 - Saídas:
-  - [ ] `docs/sites/site_A.md` (template: `process/mdd/templates/template_site.md`)
-  - [ ] `docs/sites/site_B.md` (template: `process/mdd/templates/template_site.md`)
-  - [ ] `docs/sites/site_C.md` (template: `process/mdd/templates/template_site.md`)
-  - [ ] (opcionais) `output/docs/sites/site_*.html` — por `mdd_publisher`
-  - [ ] `docs/resultados_validacao.md` (template: `process/mdd/templates/template_resultados_validacao.md`)
-  - [ ] (opcional) `output/docs/resultados_validacao.html`
+  - [ ] `project/docs/sites/site_A.md` (template: `process/templates/template_site.md`)
+  - [ ] `project/docs/sites/site_B.md` (template: `process/templates/template_site.md`)
+  - [ ] `project/docs/sites/site_C.md` (template: `process/templates/template_site.md`)
+  - [ ] (opcionais) `project/output/docs/sites/site_*.html` — por `mdd_publisher`
+  - [ ] `project/docs/resultados_validacao.md` (template: `process/templates/template_resultados_validacao.md`)
+  - [ ] (opcional) `project/output/docs/resultados_validacao.html`
 - Critério de conclusão:
   - [ ] Stakeholder confirma que dados de validação estão prontos (`validar_landing_pages = approved`)
   - Atualizar estado:
@@ -215,11 +215,11 @@ Referência: `process/mdd/PROCESS.yml`
 ### 3.5 Etapa 05 — Avaliação Estratégica
 
 - Entradas:
-  - [ ] `docs/resultados_validacao.md`
+  - [ ] `project/docs/resultados_validacao.md`
 - Saídas (uma ou mais, dependendo da decisão):
-  - [ ] `docs/aprovacao_mvp.md` (template: `process/mdd/templates/template_aprovacao_mvp.md`)
-  - [ ] `docs/revisao_estrategica.md` (template: `process/mdd/templates/template_revisao_estrategica.md`)
-  - [ ] `docs/rejeicao_projeto.md` (template: `process/mdd/templates/template_rejeicao_projeto.md`)
+  - [ ] `project/docs/aprovacao_mvp.md` (template: `process/templates/template_aprovacao_mvp.md`)
+  - [ ] `project/docs/revisao_estrategica.md` (template: `process/templates/template_revisao_estrategica.md`)
+  - [ ] `project/docs/rejeicao_projeto.md` (template: `process/templates/template_rejeicao_projeto.md`)
 - Critério de conclusão:
   - [ ] Decisão do stakeholder (`decisao_mvp` = `approved` | `needs_revision` | `rejected`)
   - Se `needs_revision`: voltar para Etapa 01 e atualizar estado.
@@ -230,9 +230,9 @@ Referência: `process/mdd/PROCESS.yml`
 ### 3.6 Etapa 06 — Handoff para BDD
 
 - Entradas:
-  - [ ] `docs/aprovacao_mvp.md`
+  - [ ] `project/docs/aprovacao_mvp.md`
 - Saídas:
-  - [ ] `docs/handoff_bdd.md` (template: `process/mdd/templates/template_handoff_bdd.md`)
+  - [ ] `project/docs/handoff_bdd.md` (template: `process/templates/template_handoff_bdd.md`)
 - Critério de conclusão:
   - [ ] Handoff concluído (`return_approved`)
   - Atualizar estado:
@@ -252,10 +252,10 @@ Referência: `process/bdd/PROCESS.yml`
 ### 4.1 Etapa 01 — Mapeamento de Comportamentos
 
 - Entradas:
-  - [ ] `docs/visao.md`
-  - [ ] `docs/aprovacao_mvp.md`
+  - [ ] `project/docs/visao.md`
+  - [ ] `project/docs/aprovacao_mvp.md`
 - Saídas:
-  - [ ] `specs/bdd/drafts/behavior_mapping.md`
+  - [ ] `project/specs/bdd/drafts/behavior_mapping.md`
 - Critério de conclusão:
   - [ ] Mapeamento aprovado (`validar_mapeamento = approved`)
   - Atualizar estado:
@@ -265,9 +265,9 @@ Referência: `process/bdd/PROCESS.yml`
 ### 4.2 Etapa 02 — Escrita de Features Gherkin
 
 - Entradas:
-  - [ ] `specs/bdd/drafts/behavior_mapping.md`
+  - [ ] `project/specs/bdd/drafts/behavior_mapping.md`
 - Saídas:
-  - [ ] `specs/bdd/**/*.feature` (cenários Given/When/Then, linguagem de negócio)
+  - [ ] `project/specs/bdd/**/*.feature` (cenários Given/When/Then, linguagem de negócio)
 - Critério de conclusão:
   - [ ] Features aprovadas (`validar_features = approved`)
   - Atualizar estado:
@@ -277,11 +277,11 @@ Referência: `process/bdd/PROCESS.yml`
 ### 4.3 Etapa 03 — Organização e Tagging
 
 - Entradas:
-  - [ ] `specs/bdd/**/*.feature`
+  - [ ] `project/specs/bdd/**/*.feature`
 - Saídas:
-  - [ ] Estrutura de pastas organizada (10_, 20_, 30_, etc.) em `specs/bdd/`
+  - [ ] Estrutura de pastas organizada (10_, 20_, 30_, etc.) em `project/specs/bdd/`
   - [ ] Tags aplicadas (@ci-fast, @ci-int, @e2e) em todas as features
-  - [ ] `specs/bdd/README.md` atualizado
+  - [ ] `project/specs/bdd/README.md` atualizado
 - Critério de conclusão:
   - [ ] Organização e tags aprovadas (`validar_organizacao = approved`)
   - Atualizar estado:
@@ -291,10 +291,10 @@ Referência: `process/bdd/PROCESS.yml`
 ### 4.4 Etapa 04 — Criação de tracks.yml
 
 - Entradas:
-  - [ ] `specs/bdd/**/*.feature`
-  - [ ] `docs/visao.md`
+  - [ ] `project/specs/bdd/**/*.feature`
+  - [ ] `project/docs/visao.md`
 - Saídas:
-  - [ ] `specs/bdd/tracks.yml`
+  - [ ] `project/specs/bdd/tracks.yml`
 - Critério de conclusão:
   - [ ] tracks.yml aprovado (`validar_tracks = approved`)
   - Atualizar estado:
@@ -304,7 +304,7 @@ Referência: `process/bdd/PROCESS.yml`
 ### 4.5 Etapa 05 — Skeleton de Automação
 
 - Entradas:
-  - [ ] `specs/bdd/**/*.feature`
+  - [ ] `project/specs/bdd/**/*.feature`
 - Saídas:
   - [ ] `tests/bdd/test_*_steps.py`
   - [ ] `tests/bdd/conftest.py`
@@ -318,11 +318,11 @@ Referência: `process/bdd/PROCESS.yml`
 ### 4.6 Etapa 06 — Handoff para Roadmap Planning
 
 - Entradas:
-  - [ ] `specs/bdd/**/*.feature`
-  - [ ] `specs/bdd/tracks.yml`
+  - [ ] `project/specs/bdd/**/*.feature`
+  - [ ] `project/specs/bdd/tracks.yml`
   - [ ] `tests/bdd/`
 - Saídas:
-  - [ ] `specs/bdd/HANDOFF_BDD.md`
+  - [ ] `project/specs/bdd/HANDOFF_BDD.md`
 - Critério de conclusão:
   - [ ] Tech lead confirma completude (`decisao_completude = complete`)
   - Atualizar estado:
@@ -338,15 +338,14 @@ Referência: `process/execution/PROCESS.yml`
 
 ### IMPORTANTE — Ordem obrigatória dentro de Execution
 
-- [ ] **NUNCA** chamar `tdd_coder` direto logo após BDD.
+- [ ] **NUNCA** iniciar `execution.tdd.*` direto logo após BDD.
 - [ ] Sempre seguir:
-  - [ ] `execution.roadmap_planning` → gerar `specs/roadmap/*`
+  - [ ] `execution.roadmap_planning` → gerar `project/specs/roadmap/*`
   - [ ] **só depois** `execution.tdd` (TDD Workflow)
 - TDD só começa se:
-  - [ ] `specs/roadmap/ROADMAP.md` existir
-  - [ ] `specs/roadmap/BACKLOG.md` existir
-  - [ ] O núcleo do ForgeBase estiver instalado e importável no ambiente (ver `docs/guides/forgebase_guides/forgebase_install.md`)
-  - [ ] Ambiente de testes e hooks de pre-commit estiverem configurados (virtualenv, pytest/pytest-bdd, pre-commit + ruff conforme `temp/setup-git.txt`)
+  - [ ] `project/specs/roadmap/ROADMAP.md` existir
+  - [ ] `project/specs/roadmap/BACKLOG.md` existir
+  - [ ] Ambiente de testes e hooks de pre-commit estiverem configurados (virtualenv, pytest/pytest-bdd, pre-commit + ruff conforme `env/setup-git.txt`)
 
 ### 5.1 Roadmap Planning (execution.roadmap_planning)
 
@@ -359,58 +358,58 @@ Referência: `process/execution/roadmap_planning/PROCESS.yml`
 #### 5.1.1 Etapa 00 — Validação Arquitetural com Stakeholders
 
 - Entradas:
-  - [ ] `docs/visao.md`
-  - [ ] `specs/bdd/*.feature`
-  - [ ] `specs/bdd/tracks.yml`
+  - [ ] `project/docs/visao.md`
+  - [ ] `project/specs/bdd/*.feature`
+  - [ ] `project/specs/bdd/tracks.yml`
 - Saídas:
-  - [ ] `specs/roadmap/ARCHITECTURAL_QUESTIONNAIRE.md`
-  - [ ] `specs/roadmap/ARCHITECTURAL_DECISIONS_APPROVED.md`
+  - [ ] `project/specs/roadmap/ARCHITECTURAL_QUESTIONNAIRE.md`
+  - [ ] `project/specs/roadmap/ARCHITECTURAL_DECISIONS_APPROVED.md`
 - Critério de conclusão:
   - [ ] Stakeholder aprova propostas (`decisao_aprovacao_arquitetura = approved`)
 
 #### 5.1.2 Etapa 01 — Definição Arquitetural e Stack (ADR)
 
 - Entradas:
-  - [ ] `specs/roadmap/ARCHITECTURAL_DECISIONS_APPROVED.md`
+  - [ ] `project/specs/roadmap/ARCHITECTURAL_DECISIONS_APPROVED.md`
 - Saídas:
-  - [ ] `specs/roadmap/TECH_STACK.md`
-  - [ ] `specs/roadmap/ADR.md`
-  - [ ] `specs/roadmap/adr/*.md`
-  - [ ] `specs/roadmap/HLD.md`
-  - [ ] `specs/roadmap/LLD.md`
+  - [ ] `project/specs/roadmap/TECH_STACK.md`
+  - [ ] `project/specs/roadmap/ADR.md`
+  - [ ] `project/specs/roadmap/adr/*.md`
+  - [ ] `project/specs/roadmap/HLD.md`
+  - [ ] `project/specs/roadmap/LLD.md`
 
 #### 5.1.3 Etapa 02 — Análise de Dependências
 
 - Entradas:
-  - [ ] `specs/bdd/tracks.yml`
-  - [ ] `specs/bdd/**/*.feature`
+  - [ ] `project/specs/bdd/tracks.yml`
+  - [ ] `project/specs/bdd/**/*.feature`
 - Saídas:
-  - [ ] `specs/roadmap/dependency_graph.md`
+  - [ ] `project/specs/roadmap/dependency_graph.md`
 
 #### 5.1.4 Etapa 03 — Quebra de Features
 
 - Entradas:
-  - [ ] `specs/bdd/**/*.feature`
-  - [ ] `specs/roadmap/dependency_graph.md`
+  - [ ] `project/specs/bdd/**/*.feature`
+  - [ ] `project/specs/roadmap/dependency_graph.md`
 - Saídas:
-  - [ ] `specs/roadmap/feature_breakdown.md`
+  - [ ] `project/specs/roadmap/feature_breakdown.md`
 
 #### 5.1.5 Etapa 04 — Estimativa e Priorização
 
 - Entradas:
-  - [ ] `specs/roadmap/feature_breakdown.md`
-  - [ ] `specs/roadmap/dependency_graph.md`
+  - [ ] `project/specs/roadmap/feature_breakdown.md`
+  - [ ] `project/specs/roadmap/dependency_graph.md`
 - Saídas:
-  - [ ] `specs/roadmap/estimates.yml`
+  - [ ] `project/specs/roadmap/estimates.yml`
 
 #### 5.1.6 Etapa 05 — Criação do Roadmap e Backlog
 
 - Entradas:
-  - [ ] `specs/roadmap/estimates.yml`
-  - [ ] `specs/roadmap/dependency_graph.md`
+  - [ ] `project/specs/roadmap/estimates.yml`
+  - [ ] `project/specs/roadmap/dependency_graph.md`
 - Saídas:
-  - [ ] `specs/roadmap/ROADMAP.md`
-  - [ ] `specs/roadmap/BACKLOG.md`
+  - [ ] `project/specs/roadmap/ROADMAP.md`
+  - [ ] `project/specs/roadmap/BACKLOG.md`
 - Critério de conclusão:
   - [ ] Tech lead aprova roadmap (`decisao_aprovacao_roadmap = approved`) — aprovador: _stakeholder/tech lead deste projeto_
   - Atualizar estado:
@@ -422,21 +421,21 @@ Referência: `process/execution/roadmap_planning/PROCESS.yml`
 
 Referência: `process/execution/tdd/PROCESS.yml`
 
-> Symbiota responsável por esta fase: `tdd_coder` (seleciona tarefa, escreve e consolida testes/steps BDD, sem alterar `src/**`).
-> Regra: **TDD SEMPRE parte de um item do `BACKLOG.md` e entrega uma suíte de testes pronta para o forge_coder usar em Delivery.**
+> Symbiota responsável por esta fase: `forge_coder` (seleciona tarefa, escreve e consolida testes/steps BDD e, quando necessário, faz ajustes mínimos em `src/**`, sempre guiado pelo backlog).
+> Regra: **TDD SEMPRE parte de um item do `BACKLOG.md` e entrega uma suíte de testes (e, opcionalmente, código inicial) pronta para ser consolidada em Delivery.**
 
 #### 5.2.1 Phase 1 — Seleção da Tarefa e BDD Scenarios
 
 - Entradas:
-  - [ ] `specs/roadmap/BACKLOG.md`
-  - [ ] `specs/bdd/**/*.feature`
+  - [ ] `project/specs/roadmap/BACKLOG.md`
+  - [ ] `project/specs/bdd/**/*.feature`
 - Saídas:
   - [ ] `tests/bdd/test_*_steps.py` (arquivo de teste preparado/focado na tarefa)
 
 #### 5.2.2 Phase 2 — Test Setup (RED)
 
 - Entradas:
-  - [ ] `specs/bdd/**/*.feature`
+  - [ ] `project/specs/bdd/**/*.feature`
 - Saídas:
   - [ ] `tests/bdd/test_*.py` com teste falhando (RED)
 
@@ -445,17 +444,17 @@ Referência: `process/execution/tdd/PROCESS.yml`
 - Entradas:
   - [ ] `tests/bdd/test_*.py`
 - Saídas:
-  - [ ] `tests/**/*.py` verdes para a tarefa selecionada (cobertura comportamental garantida pelo `tdd_coder`).
-  - Observação: qualquer implementação de código em `src/**` decorrente desses testes deve ser realizada pelo `forge_coder` na Fase 6 (Delivery/Sprint).
+  - [ ] `tests/**/*.py` verdes para a tarefa selecionada (cobertura comportamental garantida pelo `forge_coder`).
+  - Observação: durante `execution.tdd.*`, priorizar ajustes em testes e o mínimo de código em `src/**` necessário para validar o comportamento; a consolidação e refatoração maior em `src/**` acontece nas sessões de Delivery/Sprint, ainda com o `forge_coder` como executor principal.
 
-> Revisor de processo ao final da fase 5 (Execution): `jorge_the_forge` (audita se Roadmap Planning + TDD seguiram o ForgeProcess, incluindo relação com BDD, backlog e limites de escopo entre tdd_coder e forge_coder).
+> Revisor de processo ao final da fase 5 (Execution): `jorge_the_forge` (audita se Roadmap Planning + TDD seguiram o ForgeProcess, incluindo relação com BDD, backlog e limites de escopo do forge_coder entre Execution/TDD e Delivery).
 
 ### Handoff Execution → Delivery
 
 - Critério para encerrar a Fase 5 (Execution) em um ciclo:
-  - [ ] `specs/roadmap/ROADMAP.md` e `specs/roadmap/BACKLOG.md` existentes e aprovados (5.1 concluída).
+  - [ ] `project/specs/roadmap/ROADMAP.md` e `project/specs/roadmap/BACKLOG.md` existentes e aprovados (5.1 concluída).
   - [ ] Tarefas selecionadas do backlog cobertas por testes BDD/pytest verdes (`tests/bdd/**`) para o escopo deste ciclo (5.2.3 concluída para essas tarefas).
-  - [ ] Revisão de processo da Fase 5 realizada por `jorge_the_forge`, confirmando aderência ao ForgeProcess e limites de escopo entre `tdd_coder` e `forge_coder`.
+  - [ ] Revisão de processo da Fase 5 realizada por `jorge_the_forge`, confirmando aderência ao ForgeProcess e limites de escopo do `forge_coder` entre Execution/TDD e Delivery.
 - Ao concluir Execution para o ciclo atual:
   - Atualizar estado neste arquivo:
     - [ ] `current_phase = delivery.sprint`
@@ -480,7 +479,7 @@ Referência: `process/delivery/sprint/PROCESS.yml`
 #### 6.1.1 Sprint Planning
 
 - Entradas:
-  - [ ] `specs/roadmap/BACKLOG.md`
+  - [ ] `project/specs/roadmap/BACKLOG.md`
 - Saídas:
   - [ ] `project/sprints/sprint-N/planning.md`
 
@@ -526,7 +525,7 @@ Referência: `process/delivery/review/PROCESS.yml`
 - Entradas:
   - [ ] `src/**/*.py`
   - [ ] `tests/**/*.py`
-  - [ ] `specs/bdd/**/*.feature`
+  - [ ] `project/specs/bdd/**/*.feature`
 - Saídas:
   - [ ] `project/sprints/sprint-N/review.md`
 
@@ -654,12 +653,11 @@ Referência: macro em `process/PROCESS.yml` (phases.feedback)
 
 ## 8. Regras específicas para symbiotas (resumo rápido)
 
-- `tdd_coder`:
-  - [ ] Nunca iniciar implementação se `specs/roadmap/BACKLOG.md` não existir.
-  - [ ] Em caso de ausência, registrar no contexto: “É necessário rodar Roadmap Planning antes do TDD” e solicitar intervenção de `roadmap_coach`.
-  - [ ] **Escopo restrito a testes**: só criar/alterar `tests/**` (step definitions e testes); **nunca** alterar `src/**`. Se a implementação exigir mudanças em runtime/código de produção, registrar/usar item de backlog e acionar o `forge_coder` na fase 6 (Delivery/Sprint).
 - `forge_coder`:
-  - [ ] Implementar e commitar código principalmente durante a fase de Delivery (sprints), seguindo TDD e a arquitetura definida em Execution.
+  - [ ] Nunca iniciar trabalho em TDD se `project/specs/roadmap/BACKLOG.md` não existir.
+  - [ ] Em caso de ausência, registrar no contexto: “É necessário rodar Roadmap Planning antes do TDD” e solicitar intervenção de `roadmap_coach`.
+  - [ ] Durante `execution.tdd.*`, tratar `src/**` como read-only sempre que possível, focando em criar/alterar `tests/**` (step definitions e testes) e `project/specs/bdd/**`.
+  - [ ] Durante `delivery.sprint.*`, implementar e commitar código em `src/**` seguindo TDD e a arquitetura definida em Execution.
   - [ ] Trabalhar sempre em cima de itens do backlog definidos e aprovados; não inventar escopo novo durante a sprint.
 - `roadmap_coach`:
   - [ ] Sempre produzir pelo menos: `TECH_STACK.md`, `HLD.md`, `LLD.md`, `ROADMAP.md`, `BACKLOG.md`.

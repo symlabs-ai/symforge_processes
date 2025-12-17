@@ -6,7 +6,7 @@ Esse manifesto define escopo, responsabilidades e limites técnicos do agente.
 ## Campos principais
 
 ```yaml
-symbiote_id: tdd_coder            # identificador curto do symbiota
+symbiote_id: forge_coder          # identificador curto do symbiota
 role: "Frase descrevendo o papel"
 
 phase_scope:                      # fases em que o symbiota atua
@@ -23,8 +23,8 @@ allowed_steps:                    # IDs específicos de etapas (ver PROCESS_IDS.
   - execution.tdd.02.red
 
 allowed_paths:                    # globs de arquivos que pode criar/alterar
-  - docs/**
-  - specs/**
+  - project/docs/**
+  - project/specs/**
   - tests/**
 
 forbidden_paths:                  # globs de arquivos que NÃO pode criar/alterar
@@ -32,7 +32,7 @@ forbidden_paths:                  # globs de arquivos que NÃO pode criar/altera
   - process/**
 
 notes:                            # observações adicionais sobre regras de atuação
-  - "Nunca iniciar TDD se specs/roadmap/BACKLOG.md não existir."
+  - "Nunca iniciar TDD se project/specs/roadmap/BACKLOG.md não existir."
 ```
 
 ## Regras gerais para manifests
@@ -48,4 +48,3 @@ notes:                            # observações adicionais sobre regras de atu
   - Referenciar explicitamente que o agente deve respeitar o manifest.
   - Deixar claro que qualquer ação fora de `phase_scope`, `allowed_steps` e `allowed_paths`
     deve ser recusada ou delegada a outro symbiota apropriado.
-

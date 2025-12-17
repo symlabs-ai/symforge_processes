@@ -143,7 +143,7 @@ cp .env.e2e.example .env.e2e
 
 ### O que e?
 
-Step definitions **pytest-bdd** que implementam os cenarios Gherkin definidos em `specs/bdd/`.
+Step definitions **pytest-bdd** que implementam os cenarios Gherkin definidos em `project/specs/bdd/`.
 
 ### Estrutura
 
@@ -200,5 +200,6 @@ pytest tests/bdd/ -m "e2e"
 ## Referencias
 
 - Processo E2E: `process/delivery/e2e/E2E_VALIDATION_PROCESS.md`
+- guia de implementacao E2E:  `process/guides/e2e_test_writing.md`
 - Templates: `tests/e2e/template/`
 - Guia de Testes: `docs/integrations/forgebase_guides/usuarios/guia-de-testes.md`

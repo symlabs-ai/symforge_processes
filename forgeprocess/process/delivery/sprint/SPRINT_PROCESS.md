@@ -78,7 +78,7 @@ Sprint Retrospective (Day 3)
 ### Processo
 
 1. **Review do Backlog**
-   - Ler `specs/roadmap/BACKLOG.md`
+   - Ler `project/specs/roadmap/BACKLOG.md`
    - Identificar próximas features (ordem de prioridade)
 
 2. **Capacity Planning**
@@ -265,8 +265,8 @@ Se o agente `Jorge the Forge` não estiver disponível, a auditoria de processo 
    - Obter aprovação final
 
 6. **Documentar Resultados**
-   - Atualizar `specs/roadmap/BACKLOG.md` (marcar features como DONE)
-   - Atualizar `specs/roadmap/ROADMAP.md` (progresso)
+   - Atualizar `project/specs/roadmap/BACKLOG.md` (marcar features como DONE)
+   - Atualizar `project/specs/roadmap/ROADMAP.md` (progresso)
 
 7. **Implement Process Improvements** (Approved by Stakeholder)
    - Review Jorge's proposed improvements
@@ -388,8 +388,8 @@ Se sprint não atinge critérios de sucesso:
 
 - **TDD Process**: `process/execution/tdd/TDD_PROCESS.md`
 - **Review Guidelines**: `process/delivery/review/REVIEW_PROCESS.md`
-- **Backlog**: `specs/roadmap/BACKLOG.md`
-- **Roadmap**: `specs/roadmap/ROADMAP.md`
+- **Backlog**: `project/specs/roadmap/BACKLOG.md`
+- **Roadmap**: `project/specs/roadmap/ROADMAP.md`
 
 ---
 

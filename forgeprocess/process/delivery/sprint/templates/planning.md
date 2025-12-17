@@ -184,7 +184,7 @@ This sprint is considered DONE when:
 
 **Value**: [What value does this deliver? Which ValueTrack does it support?]
 
-**BDD Feature File**: `specs/bdd/features/[feature].feature`
+**BDD Feature File**: `project/specs/bdd/features/[feature].feature`
 
 **Acceptance Criteria**:
 - [ ] [Criterion 1]
@@ -287,8 +287,8 @@ This sprint is considered DONE when:
 
 ## 📚 References
 
-- **Backlog**: `specs/roadmap/BACKLOG.md`
-- **Roadmap**: `specs/roadmap/ROADMAP.md`
+- **Backlog**: `project/specs/roadmap/BACKLOG.md`
+- **Roadmap**: `project/specs/roadmap/ROADMAP.md`
 - **Previous Sprint Review**: `project/sprints/sprint-[N-1]/review.md`
 - **Previous Sprint Retrospective**: `project/sprints/sprint-[N-1]/retrospective.md`
 - **ForgeProcess**: `process/PROCESS.md`

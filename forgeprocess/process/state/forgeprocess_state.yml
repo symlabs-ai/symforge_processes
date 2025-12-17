@@ -15,7 +15,7 @@ blocked_by: null            # human | external_system | other
 # Planejamento de Ciclos (visao macro)
 # ========================================
 # Preenchido durante Roadmap Planning (execution.roadmap.06.cycle_planning)
-# Fonte de verdade: specs/roadmap/CYCLE_PLAN.md
+# Fonte de verdade: project/specs/roadmap/CYCLE_PLAN.md
 
 cycle_planning:
   total_cycles_planned: null          # ex.: 3
@@ -26,7 +26,7 @@ cycle_planning:
   total_sprints_estimated: null       # ex.: 10
 
   # Alocacao de ValueTracks por ciclo (resumo)
-  # Detalhes completos em specs/roadmap/CYCLE_PLAN.md
+  # Detalhes completos em project/specs/roadmap/CYCLE_PLAN.md
   cycles:
     # cycle-01:
     #   name: "MVP Funcional"

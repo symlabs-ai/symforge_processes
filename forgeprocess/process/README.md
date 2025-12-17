@@ -5,9 +5,9 @@ Este diretório contém a documentação **padrão do ForgeProcess** – os proc
 > **Importante sobre este repositório vs. projetos alvo**
 >
 > - Neste repositório, os arquivos do ForgeProcess vivem em `processes/forgeprocess/`.
-> - Nos projetos que **usam** o ForgeProcess, a estrutura alvo será criada em `process/`, `specs/`, `project/`, etc.
+> - Nos projetos que **usam** o ForgeProcess, a estrutura alvo será criada em `process/`, `project/` (código e docs) e `project/specs/` (BDD, roadmap, ADRs).
 > - Comandos como `symforge init -p forgeprocess myproject` (futuro utilitário) deverão copiar/gerar essa estrutura alvo em um projeto real.
-> - Sempre que este guia mencionar caminhos como `process/...`, `specs/...` ou `project/...`, está descrevendo a **estrutura alvo de um projeto**, não a estrutura física deste repositório.
+> - Sempre que este guia mencionar caminhos como `process/...` ou `project/...` (incluindo `project/specs/...`), está descrevendo a **estrutura alvo de um projeto**, não a estrutura física deste repositório.
 
 ## 📂 Estrutura
 
@@ -56,48 +56,12 @@ process/                       # Diretório alvo em um projeto que usa o ForgePr
 
 ---
 
-## 🤖 Entrypoint para Agentes / LLMs
+## 🤖 Guia para Agentes / LLMs
 
-Se você é um **symbiota** ou uma **LLM orquestradora**, use esta sequência para se localizar:
-
-1. **Ler o estado vivo**  
-   - Abrir `process/state/forgeprocess_state.yml` (fonte de verdade).  
-   - Usar `current_phase`, `last_completed_step` e `next_recommended_step` como ponto de partida.
-
-2. **Ler o resumo da fase atual**  
-   - Conforme `current_phase`, abrir o `SUMMARY_FOR_AGENTS.md` correspondente:
-     - `mdd/SUMMARY_FOR_AGENTS.md`
-     - `bdd/SUMMARY_FOR_AGENTS.md`
-     - `execution/SUMMARY_FOR_AGENTS.md`
-     - `delivery/SUMMARY_FOR_AGENTS.md`
-     - `feedback/SUMMARY_FOR_AGENTS.md`
-
-3. **Localizar a definição detalhada da etapa**  
-   - Usar o ID da etapa (ex.: `mdd.01.concepcao_visao`) para encontrar o bloco correspondente em:
-     - `mdd/MDD_process.md`
-     - `bdd/BDD_PROCESS.md`
-     - `execution/roadmap_planning/ROADMAP_PLANNING_PROCESS.md`
-     - `execution/tdd/TDD_PROCESS.md`
-     - `delivery/sprint/SPRINT_PROCESS.md`
-     - `delivery/review/REVIEW_PROCESS.md`
-
-4. **Respeitar o manifesto do symbiota**  
-   - No `symbiotes/<nome>/prompt.md`, ler o front‑matter:
-     - `symbiote_id`, `phase_scope`, `allowed_steps`, `allowed_paths`, `forbidden_paths`.
-   - Atuar **apenas** nas etapas e caminhos autorizados.
-
-5. **Atualizar estado após cada etapa**  
-   - Atualizar primeiro `state/forgeprocess_state.yml`.  
-   - Depois, refletir o novo estado no cabeçalho de `process_execution_state.md`.
-
-6. **Seguir o guia de orquestração por LLM**  
-   - Ver `docs/LLM_ORCHESTRATION_GUIDE.md` para o protocolo completo de:
-     - escolha de próximo step,
-     - briefing da etapa,
-     - execução assistida,
-     - conclusão e atualização de estado.
+Para o guia completo sobre como agentes e LLMs devem interagir com o ForgeProcess, incluindo a leitura do estado e o protocolo de orquestração, consulte: [Guia Rápido para Agentes / LLMs no ForgeProcess](AGENTS_PROCESS.md)
 
 ---
+
 
 ## 📚 Processos Disponíveis
 
@@ -113,7 +77,7 @@ Se você é um **symbiota** ou uma **LLM orquestradora**, use esta sequência pa
 4. Validação Pública (sites A/B/C)
 5. Avaliação Estratégica (decisão go/no-go)
 
-**Artefatos (estrutura alvo)**: `project/mdd-artifacts/` (visao.md, sumario_executivo.md, etc.)
+**Artefatos (estrutura alvo)**: `project/docs/` (visao.md, sumario_executivo.md, etc.)
 
 **Público**: Product Owners, Stakeholders
 
@@ -132,7 +96,7 @@ Se você é um **symbiota** ou uma **LLM orquestradora**, use esta sequência pa
 5. Skeleton e Automação
 6. Handoff para TDD
 
-**Artefatos (estrutura alvo)**: `specs/bdd/` (*.feature, tracks.yml, behavior_mapping.md)
+**Artefatos (estrutura alvo)**: `project/specs/bdd/` (*.feature, tracks.yml, behavior_mapping.md)
 
 **Público**: Product Owners, Desenvolvedores
 
@@ -148,7 +112,7 @@ Se você é um **symbiota** ou uma **LLM orquestradora**, use esta sequência pa
 2. **TDD Workflow** – implementação guiada por testes (`execution/tdd/TDD_PROCESS.md`).
 
 **Artefatos (estrutura alvo)**:
-- `specs/roadmap/` (TECH_STACK.md, ADRs, HLD.md, LLD.md, ROADMAP.md, BACKLOG.md, dependency_graph.md, estimates.yml)
+- `project/specs/roadmap/` (TECH_STACK.md, ADRs, HLD.md, LLD.md, ROADMAP.md, BACKLOG.md, dependency_graph.md, estimates.yml)
 - `src/`, `tests/`, `docs/`, `examples/` (código e testes)
 
 **Público**: Tech Leads, Arquitetos, Desenvolvedores
@@ -162,7 +126,7 @@ Se você é um **symbiota** ou uma **LLM orquestradora**, use esta sequência pa
 - **estado vivo** do ForgeProcess no projeto (campos `current_phase`, `last_completed_step`, `next_recommended_step`, etc.).
 
 **Quando usar**:
-- No início de **cada fase**, o orquestrador ou symbiota responsável (ex.: `mdd_coach`, `bdd_coach`, `mark_arc`, `tdd_coder`, `forge_coder`, `bill_review`, `jorge_the_forge`) deve consultá‑lo para saber:
+- No início de **cada fase**, o orquestrador ou symbiota responsável (ex.: `mdd_coach`, `bdd_coach`, `mark_arc`, `forge_coder`, `bill_review`, `jorge_the_forge`) deve consultá‑lo para saber:
   - onde o projeto está (fase/etapa atual),
   - qual o próximo passo recomendado,
   - quais artefatos já existem ou ainda faltam.
@@ -280,7 +244,7 @@ flowchart TD
 | Métrica | Target | Medição |
 |---------|--------|---------|
 | **Market Validation** | >70% interesse | Landing page conversions (MDD) |
-| **BDD Coverage** | 100% features | specs/bdd/*.feature |
+| **BDD Coverage** | 100% features | project/specs/bdd/*.feature |
 | **Test Coverage** | ≥80% | pytest-cov |
 | **Lint Errors** | 0 | ruff |
 | **Type Errors** | 0 | mypy |
@@ -291,15 +255,15 @@ flowchart TD
 
 ## 🔗 Documentos Relacionados
 
-### Especificações (estrutura alvo em `/specs`)
-- **BDD Features**: `/specs/bdd/` - Requisitos em Gherkin
-- **ADRs**: `/specs/adr/` - Decisões arquiteturais
-- **Roadmap**: `/specs/roadmap/` - Plano estratégico + backlog
+### Especificações (estrutura alvo em `/project/specs`)
+- **BDD Features**: `/project/specs/bdd/` - Requisitos em Gherkin
+- **ADRs**: `/project/specs/adr/` - Decisões arquiteturais
+- **Roadmap**: `/project/specs/roadmap/` - Plano estratégico + backlog
 
 ### Execução (estrutura alvo em `/project`)
 - **Sprints**: `/project/sprints/` - Progresso por sprint
 - **Reviews**: `/project/reviews/` - Reviews técnicos (bill-review)
-- **MDD Artifacts**: `/project/mdd-artifacts/` - Artefatos de negócio (visão, pitch, etc.)
+- **MDD Artifacts**: `/project/docs/` - Artefatos de negócio (visão, pitch, etc.)
 
 ### Código (estrutura alvo em `/src`)
 - **Core**: `/src/forgellmclient/core/` - Business logic

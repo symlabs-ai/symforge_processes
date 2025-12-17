@@ -95,7 +95,7 @@ Prompt: "Realize uma Sprint Review completa da Sprint N para validar conformidad
 Arquivos para revisar:
 - src/forgellmclient/** (implementação)
 - tests/** (testes)
-- specs/bdd/** (features)
+- project/specs/bdd/** (features)
 - project/sprints/sprint-N/** (documentação)
 
 Forneça:
@@ -283,6 +283,8 @@ Stakeholder decide:
 - [ ] Lint e type check sem erros?
 - [ ] Todos os BDD scenarios passando?
 - [ ] Sem regressões (features antigas ainda funcionam)?
+- [ ] Estrutura `tests/e2e/cycle-XX/` criada para o ciclo atual?
+- [ ] `./tests/e2e/cycle-XX/run-all.sh` executado com sucesso ao menos uma vez antes da pergunta "Stakeholder aprovou?"?
 
 ### Technical Compliance (bill-review)
 
@@ -379,7 +381,9 @@ Track em `project/sprints/sprint-N/review.md`:
 - **Sprint Process**: `process/delivery/sprint/SPRINT_PROCESS.md`
 - **Jorge the Forge**: `process/delivery/review/etapa_jorge_process_review.md` **← NOVO**
 - **Pre-Stakeholder Validation**: `process/delivery/review/etapa_stakeholder_validation.md` (ADR-010)
-- **Backlog**: `specs/roadmap/BACKLOG.md`
+- **E2E Validation Process**: `process/delivery/e2e/E2E_VALIDATION_PROCESS.md`
+- **E2E Test Writing Guide**: `process/guides/e2e_test_writing.md`
+- **Backlog**: `project/specs/roadmap/BACKLOG.md`
 - **Example Reviews**:
   - Technical: `project/sprints/sprint-1/review.md`
   - Process: `project/sprints/sprint-1/jorge-process-review.md` (será criado)

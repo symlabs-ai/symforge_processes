@@ -34,6 +34,14 @@ subprocesses:
       - needs_fixes
       - needs_revision
 
+  - id: e2e_cli
+    path: "e2e/PROCESS.yml"
+    description: "Validação E2E CLI-first por ciclo antes de marcar entrega como deployável"
+    expected_returns:
+      - passed
+      - failed
+      - skipped
+
 phases:
   - id: delivery_overview
     title: "Delivery Overview"
@@ -60,9 +68,17 @@ flow:
     type: call
     subprocess_id: review
     on_return:
-      approved: decisao_mais_sprints
+      approved: call_e2e_cli
       needs_fixes: call_sprint
       needs_revision: return_needs_revision
+
+  - id: call_e2e_cli
+    type: call
+    subprocess_id: e2e_cli
+    on_return:
+      passed: decisao_mais_sprints
+      failed: return_needs_revision
+      skipped: return_needs_revision
 
   - id: decisao_mais_sprints
     type: decision

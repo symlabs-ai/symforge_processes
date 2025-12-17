@@ -85,10 +85,10 @@ Exemplos:
 
 - `mdd_coach`:
   - Focado em `mdd.*`.
-  - Trabalha principalmente em `docs/hipotese.md`, `docs/visao.md`, `docs/sumario_executivo.md`, etc.
-- `tdd_coder`:
-  - Focado em `execution.tdd.*`.
-  - Só pode criar/editar `tests/**` e `specs/bdd/**`, nunca `src/**`.
+  - Trabalha principalmente em `project/docs/hipotese.md`, `project/docs/visao.md`, `project/docs/sumario_executivo.md`, etc.
+- `forge_coder`:
+  - Atua em `execution.tdd.*` e `delivery.sprint.*`.
+  - Em steps TDD (`execution.tdd.*`), deve focar em `tests/**` e `project/specs/bdd/**`, tratando `src/**` como read-only; em Delivery/Sprint pode escrever `src/**` conforme backlog aprovado.
 
 ## 5. Bloqueios e loops
 
@@ -114,4 +114,3 @@ A LLM deve interpretar essas regras em linguagem natural para atualizar `next_re
 - Nunca pular diretamente para TDD (`execution.tdd.*`) sem:
   - Etapas de BDD concluídas para o escopo atual.
   - Roadmap/Backlog definidos (`execution.roadmap.*`).
-

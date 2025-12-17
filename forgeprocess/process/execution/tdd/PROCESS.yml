@@ -37,17 +37,17 @@ phases:
           Entender cenários Given/When/Then.
           Mapear para testes Python (pytest-bdd).
         inputs:
-          - path: "specs/roadmap/BACKLOG.md"
+          - path: "project/specs/roadmap/BACKLOG.md"
             description: "Item de trabalho priorizado"
-          - path: "specs/bdd/**/*.feature"
+          - path: "project/specs/bdd/**/*.feature"
             description: "Feature files BDD"
         outputs:
           - path: "tests/bdd/test_*_steps.py"
             description: "Arquivo de teste preparado"
         actors:
           - type: symbiota
-            name: tdd_coder
-            role: "Seleciona tarefa e prepara testes"
+            name: forge_coder
+            role: "Seleciona tarefa e prepara testes (TDD)"
 
       - id: phase_2_red
         title: "Phase 2 - Test Setup (RED)"
@@ -57,15 +57,15 @@ phases:
           Implementar step definitions (BDD → Python).
           RODAR TESTE → Deve falhar (RED).
         inputs:
-          - path: "specs/bdd/**/*.feature"
+          - path: "project/specs/bdd/**/*.feature"
             description: "Feature BDD"
         outputs:
           - path: "tests/bdd/test_*.py"
             description: "Teste falhando (RED)"
         actors:
           - type: symbiota
-            name: tdd_coder
-            role: "Escreve teste que falha"
+            name: forge_coder
+            role: "Escreve teste que falha (RED)"
 
       - id: phase_3_green
         title: "Phase 3 - Minimal Implementation (GREEN - Testes)"
@@ -81,7 +81,7 @@ phases:
             description: "Testes consolidados para a tarefa selecionada"
         actors:
           - type: symbiota
-            name: tdd_coder
+            name: forge_coder
             role: "Consolida testes (GREEN) para a tarefa"
 
 flow:
@@ -105,7 +105,7 @@ flow:
       question: "Teste falha pelo motivo esperado (ImportError, AssertionError, etc)?"
       decider:
         type: symbiota
-        actor: tdd_coder
+        actor: forge_coder
         expression: "test_fails AND failure_reason_is_expected"
       branches:
         - when: "yes"
@@ -182,12 +182,13 @@ artifacts:
     description: "Relatório de cobertura de testes"
 
 symbiotes:
-  - name: tdd_coder
-    role: "Implementador TDD (testes)"
-    prompt_file: "../../symbiotes/tdd_coder/prompt.md"
+  - name: forge_coder
+    role: "Implementador TDD (testes e código)"
+    prompt_file: "../../symbiotes/forge_coder/prompt.md"
     capabilities:
       - escrever_testes
       - analisar_falhas
+      - implementar_codigo
     can_decide: true
 
 quality_metrics:

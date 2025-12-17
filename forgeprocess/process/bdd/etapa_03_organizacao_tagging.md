@@ -14,9 +14,9 @@ Estruturar as features Gherkin de forma que facilitem:
 
 | Tipo | Artefato | Descrição |
 |------|----------|-----------|
-| **Entrada** | `specs/bdd/**/*.feature` | Features recém-escritas |
-| **Saída** | `specs/bdd/` (estruturada) | Pastas organizadas por domínio |
-| **Saída** | `specs/bdd/README.md` | Guia de navegação e execução |
+| **Entrada** | `project/specs/bdd/**/*.feature` | Features recém-escritas |
+| **Saída** | `project/specs/bdd/` (estruturada) | Pastas organizadas por domínio |
+| **Saída** | `project/specs/bdd/README.md` | Guia de navegação e execução |
 | **Saída** | Features com tags consistentes | Tagueamento completo |
 
 ---
@@ -26,7 +26,7 @@ Estruturar as features Gherkin de forma que facilitem:
 ### Princípio: Prefixo Numérico + Domínio
 
 ```
-specs/bdd/
+project/specs/bdd/
 ├── 00_glossario.md                  ← Linguagem ubíqua
 ├── README.md                        ← Guia de uso
 ├── HANDOFF.md                       ← Instruções para DEV
@@ -177,7 +177,7 @@ FUNCIONALIDADE: Integração MCP Tecnospeed (ambiente staging)
 ## 📋 Exemplo Completo de Tagueamento
 
 ```gherkin
-# specs/bdd/10_forge_core/chat.feature
+# project/specs/bdd/10_forge_core/chat.feature
 
 @sdk @ci-fast
 FUNCIONALIDADE: Chat básico no Forge SDK
@@ -190,7 +190,7 @@ FUNCIONALIDADE: Chat básico no Forge SDK
 ```
 
 ```gherkin
-# specs/bdd/30_plugins_provedores/tool_calling_fallback.feature
+# project/specs/bdd/30_plugins_provedores/tool_calling_fallback.feature
 
 @sdk @capability:tool_calling @fallback @ci-fast
 FUNCIONALIDADE: Tool calling com fallback automático
@@ -203,7 +203,7 @@ FUNCIONALIDADE: Tool calling com fallback automático
 ```
 
 ```gherkin
-# specs/bdd/40_mcp_tecnospeed/marketplace.feature
+# project/specs/bdd/40_mcp_tecnospeed/marketplace.feature
 
 @mcp @tecnospeed @e2e
 FUNCIONALIDADE: Integração MCP Tecnospeed Marketplace
@@ -219,7 +219,7 @@ FUNCIONALIDADE: Integração MCP Tecnospeed Marketplace
 
 ## 📖 Criar README.md do BDD
 
-O `specs/bdd/README.md` serve como **índice navegável** e **guia de execução**.
+O `project/specs/bdd/README.md` serve como **índice navegável** e **guia de execução**.
 
 ### Template Sugerido
 
